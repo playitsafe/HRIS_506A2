@@ -1,0 +1,48 @@
+﻿<Window x:Class="HRIS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HRIS"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" HorizontalAlignment="Left">
+            <TabControl Margin="2" HorizontalAlignment="Stretch">
+                <TabItem Header="Staff List" HorizontalAlignment="Stretch" Width="94" Height="30">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Filter Staff By Name: </TextBlock>
+                            <TextBox Grid.Column="1" Grid.Row="0" Height="25"></TextBox>
+                            <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Select Department:</TextBlock>
+                            <ComboBox Grid.Column="1" Grid.Row="1" Height="25"></ComboBox>
+                        </Grid>
+                        <ListBox Name="StaffListBox" ItemsSource="{Binding Source={StaticResource x_StaffList}}" Margin="0,20,0,5" Height="213"/>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Unit List"  HorizontalAlignment="Stretch" Width="94" Height="30">
+                    <TextBlock>swswswssw</TextBlock>
+                </TabItem>
+                <TabItem Header="Heat Map" HorizontalAlignment="Stretch" Width="94" Height="30">
+                    <TextBlock>Not Required In KIT506 Assignment!</TextBlock>
+                </TabItem>
+            </TabControl>
+        </Grid>
+        <Grid Grid.Column="1">
+            
+        </Grid>
+        
+    </Grid>
+</Window>
