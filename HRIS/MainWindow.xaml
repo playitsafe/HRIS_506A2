@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HRIS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="620" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" HorizontalAlignment="Left">
+        <Grid Grid.Column="0" HorizontalAlignment="Stretch">
             <TabControl Margin="2" HorizontalAlignment="Stretch">
                 <TabItem Header="Staff List" HorizontalAlignment="Stretch" Width="94" Height="30">
                     <StackPanel>
@@ -26,7 +26,7 @@
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Filter Staff By Name: </TextBlock>
                             <TextBox Grid.Column="1" Grid.Row="0" Height="25"></TextBox>
-                            <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Select Department:</TextBlock>
+                            <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Select Category:</TextBlock>
                             <ComboBox ItemsSource="{Binding Source={StaticResource x_Category}}" SelectedIndex="0" Grid.Column="1" Grid.Row="1" Height="25"></ComboBox>
                         </Grid>
                         <ListBox Name="StaffListBox" ItemsSource="{Binding Source={StaticResource x_StaffList}}" Margin="0,20,0,5" Height="213"/>
@@ -36,12 +36,62 @@
                     <TextBlock>swswswssw</TextBlock>
                 </TabItem>
                 <TabItem Header="Heat Map" HorizontalAlignment="Stretch" Width="94" Height="30">
-                    <TextBlock>Not Required In KIT506 Assignment!</TextBlock>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Not Required In KIT506 Assignment!</TextBlock>
                 </TabItem>
             </TabControl>
         </Grid>
         <Grid Grid.Column="1">
             
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="7*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Border BorderBrush="Black" BorderThickness="3" />
+                    <StackPanel Orientation="Vertical" Margin="20,15,0,3">
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Name:</Label>
+                            <Label>XXX</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Campus:</Label>
+                            <Label>XXX</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Phone No.:</Label>
+                            <Label>XXX</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Room Location:</Label>
+                            <Label>XXX</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Email:</Label>
+                            <Label>XXX</Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Consultation hours:</Label>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Border BorderBrush="red" BorderThickness="3" >
+                        <Image/>
+                    </Border>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Border BorderBrush="Blue" BorderThickness="3" >
+                    <Expander Header="Show/Hide Staff Activity Grid">
+                        <Grid Background="Black"/>
+                    </Expander>
+                </Border>
+            </Grid>
         </Grid>
         
     </Grid>
