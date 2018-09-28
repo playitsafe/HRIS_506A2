@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using MySql.Data.Types;
+using HRIS;
 using HRIS.Entity;
 using HRIS.Adapter;
 using System.Collections.ObjectModel;
@@ -12,7 +13,7 @@ using System.Collections.ObjectModel;
 namespace HRIS.Controller
 {
     public enum Campus { Hobart, Launceston }
-    public enum Category { Academic, Admin, Casual, Technical }
+    public enum Category { All, Academic, Admin, Casual, Technical }
     public enum WeekDay { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday }
     public enum ClassType { Lecture, Tutorial, Practical, Workshop }
 

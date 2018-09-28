@@ -1,4 +1,6 @@
 ﻿using HRIS.Entity;
+using HRIS.Controller;
+using HRIS;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
