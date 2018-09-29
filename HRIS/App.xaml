@@ -1,23 +1,53 @@
 ﻿<Application x:Class="HRIS.Controller.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:HRIS.Controller"
+             xmlns:controller="clr-namespace:HRIS.Controller"
+             xmlns:entity="clr-namespace:HRIS.Entity"
+             xmlns:local="clr-namespace:HRIS"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <local:StaffController x:Key="staffController" />
+        <!--To use ObjectDataProvider to form source content of StaffViewList
+            The GetStaffViewList returns ObservableCollection type of list-->
+        <!--
+        <controller:StaffController x:Key="staffController" />
         <ObjectDataProvider x:Key="x_StaffList"
                             ObjectInstance="{StaticResource staffController}"
                             MethodName="GetStaffViewList">
         </ObjectDataProvider>
+        -->
         
+        
+        <DataTemplate x:Key="x_StaffList">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path GivenName}" />
+                <TextBlock Text=", " />
+                <TextBlock Text="{Binding FamilyName}" />
+                <TextBlock Text=" (" />
+                <TextBlock Text="{Binding StaffTitle}" />
+                <TextBlock Text=")" />
+            </StackPanel>
+        </DataTemplate>
+        
+
+        <!--To use Enum Category for the dropdown list-->
         <ObjectDataProvider x:Key="x_Category"
                             ObjectType="{x:Type sys:Enum}"
                             MethodName="GetValues">
             <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="local:Category" />
+                <x:Type TypeName="controller:Category" />
             </ObjectDataProvider.MethodParameters>
-            
         </ObjectDataProvider>
+
+        <!--
+        To create a data template for Staff name in detail panel
+        <DataTemplate DataType="{x:Type entity:Staff}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding GivenName}" />
+                <TextBlock Text=" " />
+                <TextBlock Text="{Binding FamilyName}" />
+            </StackPanel>
+        </DataTemplate>
+        -->
     </Application.Resources>
 </Application>

@@ -36,7 +36,7 @@ namespace HRIS.Controller
         }
 
         //a method to pull out the Observable staff list
-        //**try to set  above ObservableCollection StaffViewList STATIC later
+        //**try to set above ObservableCollection StaffViewList STATIC later
         public ObservableCollection<Staff> GetStaffViewList()
         {
             return StaffViewList;

@@ -4,8 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HRIS"
+        xmlns:entity="clr-namespace:HRIS.Entity"
+        xmlns:controller="clr-namespace:HRIS.Controller"
         mc:Ignorable="d"
         Title="MainWindow" Height="620" Width="800">
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -29,7 +32,27 @@
                             <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Select Category:</TextBlock>
                             <ComboBox ItemsSource="{Binding Source={StaticResource x_Category}}" SelectedIndex="0" Grid.Column="1" Grid.Row="1" Height="25"></ComboBox>
                         </Grid>
+                        <!--Use the ObjectDataprovider from App.xaml fill in the lsitbox-->
+                        <!--
                         <ListBox Name="StaffListBox" ItemsSource="{Binding Source={StaticResource x_StaffList}}" Margin="0,20,0,5" Height="213" SelectionChanged="StaffListBox_SelectionChanged"/>
+                        -->
+                        <!--
+                        <ListBox ItemsSource="{Binding Source={StaticResource x_StaffList}}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding GivenName}" />
+                                        <TextBlock Text=", " />
+                                        <TextBlock Text="{Binding FamilyName}" />
+                                        <TextBlock Text=" (" />
+                                        <TextBlock Text="{Binding StaffTitle}" />
+                                        <TextBlock Text=")" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        -->
+                        
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="Unit List"  HorizontalAlignment="Stretch" Width="94" Height="30">
@@ -55,8 +78,17 @@
                     <Border BorderBrush="Black" BorderThickness="3" />
                     <StackPanel x:Name="StaffDetailPanel" Orientation="Vertical" Margin="20,15,0,3">
                         <StackPanel Orientation="Horizontal">
-                            <Label>Name:</Label>
-                            <Label Content="{Binding Path=FamilyName}"></Label>
+                            <Label Content="Name: " />
+                            <Label Content="{Binding Path=FamiltName}"></Label>
+                            <!--To use the data template in App.xaml-->
+                            <!--
+                            <TextBlock Text="{Binding Path=GivenName}" />
+                            <TextBlock Text=" ," />
+                            <TextBlock Text="{Binding Path=FamilyName}" />
+                            <TextBlock Text="(" />
+                            <TextBlock Text="{Binding Path=StaffTitle}" />
+                            <TextBlock Text=")" />
+                            -->
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label>Campus:</Label>

@@ -16,5 +16,4 @@ C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\HRIS.csproj.CoreCompileInputs.ca
 C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\HRIS.csproj.CopyComplete
 C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\HRIS.exe
 C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\HRIS.pdb
-C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\App.baml
