@@ -9,27 +9,29 @@
     <Application.Resources>
         <!--To use ObjectDataProvider to form source content of StaffViewList
             The GetStaffViewList returns ObservableCollection type of list-->
-        <!--
+        <!-- This part has been replaced with data template
         <controller:StaffController x:Key="staffController" />
         <ObjectDataProvider x:Key="x_StaffList"
                             ObjectInstance="{StaticResource staffController}"
                             MethodName="GetStaffViewList">
         </ObjectDataProvider>
         -->
-        
-        
-        <DataTemplate x:Key="x_StaffList">
+
+        <!--To initiate the resource for template-->
+        <controller:StaffController x:Key="StaffListResource" />
+
+        <!--To use data template to fill in the staff list with specific format-->
+        <DataTemplate x:Key="StaffListTemplate">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding Path GivenName}" />
+                <TextBlock Text="{Binding Path=FamilyName}" />
                 <TextBlock Text=", " />
-                <TextBlock Text="{Binding FamilyName}" />
+                <TextBlock Text="{Binding Path=GivenName}" />
                 <TextBlock Text=" (" />
-                <TextBlock Text="{Binding StaffTitle}" />
+                <TextBlock Text="{Binding Path=StaffTitle}" />
                 <TextBlock Text=")" />
             </StackPanel>
         </DataTemplate>
         
-
         <!--To use Enum Category for the dropdown list-->
         <ObjectDataProvider x:Key="x_Category"
                             ObjectType="{x:Type sys:Enum}"
@@ -38,7 +40,7 @@
                 <x:Type TypeName="controller:Category" />
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
-
+        
         <!--
         To create a data template for Staff name in detail panel
         <DataTemplate DataType="{x:Type entity:Staff}">

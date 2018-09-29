@@ -25,7 +25,7 @@ namespace HRIS.Entity
 
         public override string ToString()
         {
-            return $"{FamilyName}, {GivenName} ({StaffTitle})";
+            return $"{GivenName} {FamilyName} ({StaffTitle})";
         }
     }
 

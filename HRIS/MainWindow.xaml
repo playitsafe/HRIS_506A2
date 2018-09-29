@@ -52,7 +52,12 @@
                             </ListBox.ItemTemplate>
                         </ListBox>
                         -->
-                        
+                        <ListBox x:Name="StaffListShowBox"
+                                 ItemsSource="{Binding Source={StaticResource StaffListResource}, Path=StaffViewList}"
+                                 ItemTemplate="{StaticResource StaffListTemplate}"
+                                 Margin="10,40,10,8" 
+                                 SelectionChanged="StaffListBox_SelectionChanged" Height="418"/>
+
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="Unit List"  HorizontalAlignment="Stretch" Width="94" Height="30">
@@ -76,19 +81,14 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <Border BorderBrush="Black" BorderThickness="3" />
+                    
+                    <!--Fill in the selected detail panel-->
                     <StackPanel x:Name="StaffDetailPanel" Orientation="Vertical" Margin="20,15,0,3">
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Name: " />
-                            <Label Content="{Binding Path=FamiltName}"></Label>
-                            <!--To use the data template in App.xaml-->
-                            <!--
-                            <TextBlock Text="{Binding Path=GivenName}" />
-                            <TextBlock Text=" ," />
-                            <TextBlock Text="{Binding Path=FamilyName}" />
-                            <TextBlock Text="(" />
-                            <TextBlock Text="{Binding Path=StaffTitle}" />
-                            <TextBlock Text=")" />
-                            -->
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Label Content="Name:" />
+                            <Label Content="{Binding Path=StaffTitle}" />
+                            <Label Content="{Binding Path=GivenName}" />
+                            <Label Content="{Binding Path=FamilyName}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label>Campus:</Label>
