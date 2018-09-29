@@ -12,7 +12,7 @@ namespace HRIS.Teaching
     public class Consultation
     {
         public int StaffId { get; set; }
-        public WeekDay WeekDay { get; set; }
+        public DayOfWeek WeekDay { get; set; }
         public TimeSpan Start { get; set; }
         public TimeSpan End { get; set; }
     }

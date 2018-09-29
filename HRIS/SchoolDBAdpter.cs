@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.Types;
 
 namespace HRIS.Adapter
 {
@@ -90,6 +91,50 @@ namespace HRIS.Adapter
                 }
             }
             return AllStaffList;
+        }
+
+        //query staff properties from DB
+        public static List<Consultation> LoadAllConsultationTime(int id)
+        {
+            List<Consultation> consultationList = new List<Consultation>();
+
+            MySqlConnection conn = ConnAlacritas();
+            MySqlDataReader rdr = null;
+
+            try
+            {
+                conn.Open();
+                MySqlCommand sqlCmd = new MySqlCommand("select day, start, end from consultation where staff_id=?id", conn);
+                sqlCmd.Parameters.AddWithValue("id", id);
+                rdr = sqlCmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    consultationList.Add(new Consultation
+                    {
+                        WeekDay = ParseEnum<DayOfWeek>(rdr["day"].ToString()),
+                        Start =  rdr.GetTimeSpan(rdr["start"].ToString()),
+                        End = rdr.GetTimeSpan(rdr["end"].ToString()),
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+            return consultationList;
         }
     }
 }

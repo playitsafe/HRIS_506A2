@@ -14,7 +14,7 @@ namespace HRIS.Controller
 {
     public enum Campus { Hobart, Launceston }
     public enum Category { All, Academic, Admin, Casual, Technical }
-    public enum WeekDay { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday }
+    //public enum WeekDay { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday }
     public enum ClassType { Lecture, Tutorial, Practical, Workshop }
 
     public class StaffController

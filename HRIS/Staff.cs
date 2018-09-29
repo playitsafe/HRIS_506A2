@@ -22,11 +22,13 @@ namespace HRIS.Teaching
         public string Email { get; set; }
         public string PhotoUrl { get; set; }
         public Category Category { get; set; }
-
+        
+        /*
         public override string ToString()
         {
             return $"{GivenName} {FamilyName} ({StaffTitle})";
         }
+        */
     }
 
 }
