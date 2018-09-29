@@ -28,5 +28,13 @@ namespace HRIS
         {
             InitializeComponent();
         }
+
+        private void StaffListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0)
+            {
+                StaffDetailPanel.DataContext = e.AddedItems[0];
+            }
+        }
     }
 }

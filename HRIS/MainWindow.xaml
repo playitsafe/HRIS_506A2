@@ -29,7 +29,7 @@
                             <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Select Category:</TextBlock>
                             <ComboBox ItemsSource="{Binding Source={StaticResource x_Category}}" SelectedIndex="0" Grid.Column="1" Grid.Row="1" Height="25"></ComboBox>
                         </Grid>
-                        <ListBox Name="StaffListBox" ItemsSource="{Binding Source={StaticResource x_StaffList}}" Margin="0,20,0,5" Height="213"/>
+                        <ListBox Name="StaffListBox" ItemsSource="{Binding Source={StaticResource x_StaffList}}" Margin="0,20,0,5" Height="213" SelectionChanged="StaffListBox_SelectionChanged"/>
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="Unit List"  HorizontalAlignment="Stretch" Width="94" Height="30">
@@ -53,26 +53,26 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <Border BorderBrush="Black" BorderThickness="3" />
-                    <StackPanel Orientation="Vertical" Margin="20,15,0,3">
+                    <StackPanel x:Name="StaffDetailPanel" Orientation="Vertical" Margin="20,15,0,3">
                         <StackPanel Orientation="Horizontal">
                             <Label>Name:</Label>
-                            <Label>XXX</Label>
+                            <Label Content="{Binding Path=FamilyName}"></Label>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label>Campus:</Label>
-                            <Label>XXX</Label>
+                            <Label Content="{Binding Path=Campus}"></Label>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label>Phone No.:</Label>
-                            <Label>XXX</Label>
+                            <Label Content="{Binding Path=Phone}"></Label>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label>Room Location:</Label>
-                            <Label>XXX</Label>
+                            <Label Content="{Binding Path=Room}"></Label>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label>Email:</Label>
-                            <Label>XXX</Label>
+                            <Label Content="{Binding Path=Email}"></Label>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label>Consultation hours:</Label>
@@ -81,7 +81,7 @@
                 </Grid>
                 <Grid Grid.Column="1">
                     <Border BorderBrush="red" BorderThickness="3" >
-                        <Image/>
+                        <Image x:Name="PhotoGrid" />
                     </Border>
                 </Grid>
             </Grid>
