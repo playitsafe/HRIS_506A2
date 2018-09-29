@@ -31,6 +31,13 @@ namespace HRIS.Controller
         public StaffController()
         {
             allStaffList = SchoolDBAdpter.LoadAllStaff();
+            
+            //add consultation time list for every staff
+            foreach (Staff s in allStaffList)
+            {
+                s.StaffConsultationList = SchoolDBAdpter.LoadConsultationList(s.StaffId);
+            }
+
             //to allow list for changing later
             staffViewList = new ObservableCollection<Staff>(allStaffList);
         }

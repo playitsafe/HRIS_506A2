@@ -22,7 +22,9 @@ namespace HRIS.Teaching
         public string Email { get; set; }
         public string PhotoUrl { get; set; }
         public Category Category { get; set; }
-        
+
+        public List<Consultation> StaffConsultationList { get; set; }
+
         /*
         public override string ToString()
         {

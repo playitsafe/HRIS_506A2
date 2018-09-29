@@ -106,9 +106,10 @@
                             <Label>Email:</Label>
                             <Label Content="{Binding Path=Email}"></Label>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel>
                             <Label>Consultation hours:</Label>
                         </StackPanel>
+                        <ListBox ItemsSource="{Binding Path=StaffConsultationList}" Margin="0,0,10,10" Height="70" VerticalAlignment="Bottom"/>
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Column="1">

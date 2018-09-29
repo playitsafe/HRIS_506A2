@@ -53,7 +53,7 @@ namespace HRIS.Adapter
             try
             {
                 conn.Open();
-                MySqlCommand sqlCmd = new MySqlCommand("select family_name, given_name, title, campus, phone, room, email, photo, category from staff", conn);
+                MySqlCommand sqlCmd = new MySqlCommand("select id, family_name, given_name, title, campus, phone, room, email, photo, category from staff", conn);
                 rdr = sqlCmd.ExecuteReader();
 
                 //pull all staff in DBtable to AllStaffList Object
@@ -63,6 +63,7 @@ namespace HRIS.Adapter
                     //AllStaffList.Add(new Staff { FamilyName = rdr.GetString(0), GivenName = rdr.GetString(1), StaffTitle = rdr.GetString(2) });
                     AllStaffList.Add(new Staff
                     {
+                        StaffId = Int32.Parse(rdr["id"].ToString()),
                         FamilyName = rdr["family_name"].ToString(),
                         GivenName = rdr["given_name"].ToString(),
                         StaffTitle = rdr["title"].ToString(),
@@ -94,7 +95,7 @@ namespace HRIS.Adapter
         }
 
         //query staff properties from DB
-        public static List<Consultation> LoadAllConsultationTime(int id)
+        public static List<Consultation> LoadConsultationList(int id)
         {
             List<Consultation> consultationList = new List<Consultation>();
 
@@ -113,8 +114,10 @@ namespace HRIS.Adapter
                     consultationList.Add(new Consultation
                     {
                         WeekDay = ParseEnum<DayOfWeek>(rdr["day"].ToString()),
-                        Start =  rdr.GetTimeSpan(rdr["start"].ToString()),
-                        End = rdr.GetTimeSpan(rdr["end"].ToString()),
+                        //Start =  rdr.GetTimeSpan(rdr["start"].ToString()),
+                        //End = rdr.GetTimeSpan(rdr["end"].ToString())
+                        Start = rdr.GetTimeSpan(1),
+                        End = rdr.GetTimeSpan(2)
                     });
                 }
             }

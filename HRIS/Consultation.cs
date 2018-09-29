@@ -15,5 +15,11 @@ namespace HRIS.Teaching
         public DayOfWeek WeekDay { get; set; }
         public TimeSpan Start { get; set; }
         public TimeSpan End { get; set; }
+
+        //To override the to string for displaying in listbox
+        public override string ToString()
+        {
+            return $"{WeekDay} {Start} -- {End}";
+        }
     }
 }
