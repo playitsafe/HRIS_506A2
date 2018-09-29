@@ -81,7 +81,7 @@
                 </Grid>
                 <Grid Grid.Column="1">
                     <Border BorderBrush="red" BorderThickness="3" >
-                        <Image x:Name="PhotoGrid" />
+                        <Image x:Name="PhotoGrid" Source="{Binding Path=PhotoUrl}" />
                     </Border>
                 </Grid>
             </Grid>

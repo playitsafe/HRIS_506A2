@@ -34,6 +34,7 @@ namespace HRIS
             if (e.AddedItems.Count > 0)
             {
                 StaffDetailPanel.DataContext = e.AddedItems[0];
+                PhotoGrid.DataContext = e.AddedItems[0];
             }
         }
     }
