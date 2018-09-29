@@ -7,7 +7,7 @@ using HRIS;
 using HRIS.Controller;
 using HRIS.Adapter;
 
-namespace HRIS.Entity
+namespace HRIS.Teaching
 {
     public class UnitClass
     {

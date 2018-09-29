@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HRIS"
-        xmlns:entity="clr-namespace:HRIS.Entity"
+        xmlns:entity="clr-namespace:HRIS.Teaching"
         xmlns:controller="clr-namespace:HRIS.Controller"
         mc:Ignorable="d"
         Title="MainWindow" Height="620" Width="800">

@@ -7,7 +7,7 @@ using HRIS.Controller;
 using HRIS.Adapter;
 using HRIS;
 
-namespace HRIS.Entity
+namespace HRIS.Teaching
 {
     
     public class Staff

@@ -1,4 +1,4 @@
-﻿using HRIS.Entity;
+﻿using HRIS.Teaching;
 using HRIS.Controller;
 using HRIS;
 using MySql.Data.MySqlClient;

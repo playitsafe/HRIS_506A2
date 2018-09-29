@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HRIS.Adapter;
-using HRIS.Entity;
+using HRIS.Teaching;
 using HRIS.Controller;
 
 
