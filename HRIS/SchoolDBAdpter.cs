@@ -94,10 +94,11 @@ namespace HRIS.Adapter
             return AllStaffList;
         }
 
-        //query staff properties from DB
+        //query staff property->List<Consultation> from DB
         public static List<Consultation> LoadConsultationList(int id)
         {
             List<Consultation> consultationList = new List<Consultation>();
+            //List<UnitClass> unitTeachingList = new List<UnitClass>();
 
             MySqlConnection conn = ConnAlacritas();
             MySqlDataReader rdr = null;
@@ -138,6 +139,50 @@ namespace HRIS.Adapter
             }
 
             return consultationList;
+        }
+
+        //query staff property->List<UnitClass> from DB
+        public static List<UnitClass> LoadUnitTeachingList(int id)
+        {
+            List<UnitClass> unitTeachingList = new List<UnitClass>();
+
+            MySqlConnection conn = ConnAlacritas();
+            MySqlDataReader rdr = null;
+
+            try
+            {
+                conn.Open();
+                MySqlCommand sqlCmd = new MySqlCommand("select distinct c.unit_code, u.title from class c join unit u on c.unit_code=u.code where c.staff=?id", conn);
+                sqlCmd.Parameters.AddWithValue("id", id);
+                rdr = sqlCmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    unitTeachingList.Add(new UnitClass
+                    {
+                        //TeachingStaff = rdr.GetInt32(0),
+                        UnitCode = rdr.GetString(0),
+                        UnitName = rdr.GetString(1)
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+            return unitTeachingList;
         }
     }
 }

@@ -12,12 +12,20 @@ namespace HRIS.Teaching
     public class UnitClass
     {
         public string UnitCode { get; set; }
+        public string UnitName { get; set; }
         public Campus Campus { get; set; }
         public DayOfWeek WeekDay { get; set; }
         public TimeSpan Start { get; set; }
         public TimeSpan End { get; set; }
         public ClassType ClassType { get; set; }
         public string Room { get; set; }
-        public string TeachingStaff { get; set; }
+        public int TeachingStaff { get; set; }
+
+        //To override the to string for displaying in listbox
+        public override string ToString()
+        {
+            return $"{UnitCode} {UnitName}";
+        }
+
     }
 }

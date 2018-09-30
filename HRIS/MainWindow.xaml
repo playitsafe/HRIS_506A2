@@ -7,7 +7,7 @@
         xmlns:entity="clr-namespace:HRIS.Teaching"
         xmlns:controller="clr-namespace:HRIS.Controller"
         mc:Ignorable="d"
-        Title="MainWindow" Height="620" Width="800">
+        Title="MainWindow" Height="650" Width="800">
     <Grid>
         <TabControl  Margin="2" HorizontalAlignment="Stretch">
             <TabItem  Header="Staff List" HorizontalAlignment="Stretch" Width="94" Height="30">
@@ -28,9 +28,9 @@
                                     <RowDefinition Height="30"/>
                                 </Grid.RowDefinitions>
                                 <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Filter Staff By Name:</TextBlock>
-                                <TextBox x:Name="StaffNameFilter" Grid.Column="1" Grid.Row="0" Height="25" KeyUp="StaffNameFilter_KeyUp"/>
+                                <TextBox x:Name="StaffNameFilter" Grid.Column="1" Grid.Row="0" Height="25" KeyUp="StaffNameFilter_KeyUp" Margin="0,0,10,0"/>
                                 <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Select Category:</TextBlock>
-                                <ComboBox ItemsSource="{Binding Source={StaticResource x_Category}}" SelectedIndex="0" Grid.Column="1" Grid.Row="1" Height="25" SelectionChanged="Category_SelectionChanged"></ComboBox>
+                                <ComboBox ItemsSource="{Binding Source={StaticResource x_Category}}" SelectedIndex="0" Grid.Column="1" Grid.Row="1" Height="25" SelectionChanged="Category_SelectionChanged" Margin="0,0,10,0"></ComboBox>
                             </Grid>
                             <!--Use the ObjectDataprovider from App.xaml fill in the lsitbox-->
                             <!--
@@ -62,8 +62,8 @@
                     </Grid>
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="5*" />
-                            <RowDefinition Height="7*" />
+                            <RowDefinition Height="3*" />
+                            <RowDefinition Height="2*" />
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
@@ -97,10 +97,12 @@
                                         <Label>Email:</Label>
                                         <Label Content="{Binding Path=Email}"></Label>
                                     </StackPanel>
-                                    <StackPanel>
-                                        <Label>Consultation hours:</Label>
-                                    </StackPanel>
-                                    <ListBox ItemsSource="{Binding Path=StaffConsultationList}" Margin="0,0,10,10" Height="70" VerticalAlignment="Bottom"/>
+                                    <TextBlock Text="Consultation hours:" />
+                                    <ListBox ItemsSource="{Binding Path=StaffConsultationList}" 
+                                             Margin="0,0,10,10" Height="57" VerticalAlignment="Bottom"/>
+                                    <TextBlock Text="Teaching This Semester:"/>
+                                    <ListBox  ItemsSource="{Binding Path=UnitTeachingList}"
+                                              Height="104" Margin="0,0,10,0"></ListBox>
                                 </StackPanel>
                             </Grid>
                             <Grid Grid.Column="1">
@@ -109,11 +111,21 @@
                                 </Border>
                             </Grid>
                         </Grid>
-                        <Grid Grid.Row="1">
+                        <Grid Grid.Row="1" x:Name="ActivityGrid">
                             <Border BorderBrush="Blue" BorderThickness="3" >
-                                <Expander Header="Show/Hide Staff Activity Grid">
-                                    <Grid Background="Black"/>
-                                </Expander>
+                                <!--<Expander Header="Show/Hide Staff Activity Grid">-->
+                                    <DataGrid  Height="90" 
+                                              IsReadOnly="True"
+                                              ItemsSource="{Binding Path=ActivityTable.DefaultView}">
+                                        <!--
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="WeekDay" Binding="{Binding WeekDay}" />
+                                            <DataGridTextColumn Header="Start" Binding="{Binding Start}" />
+                                            <DataGridTextColumn Header="End" Binding="{Binding End}" />
+                                        </DataGrid.Columns>
+                                        -->
+                                    </DataGrid>
+                                <!--</Expander> -->
                             </Border>
                         </Grid>
                     </Grid>

@@ -41,6 +41,7 @@ namespace HRIS
             {
                 StaffDetailPanel.DataContext = e.AddedItems[0];
                 PhotoGrid.DataContext = e.AddedItems[0];
+                ActivityGrid.DataContext = e.AddedItems[0];
             }
         }
 

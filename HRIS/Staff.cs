@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using HRIS.Controller;
 using HRIS.Adapter;
 using HRIS;
+using System.Data;
 
 namespace HRIS.Teaching
 {
@@ -24,6 +25,23 @@ namespace HRIS.Teaching
         public Category Category { get; set; }
 
         public List<Consultation> StaffConsultationList { get; set; }
+        public List<UnitClass> UnitTeachingList { get; set; }
+
+        public DataTable ActivityTable { get; set; }
+
+        public Staff()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Time", typeof(string));
+            dt.Columns.Add("Monday", typeof(string));
+            dt.Columns.Add("Tuesday", typeof(string));
+            dt.Columns.Add("Wednesday", typeof(string));
+            dt.Columns.Add("Thursday", typeof(string));
+            dt.Columns.Add("Friday", typeof(string));
+            dt.Rows.Add(new string[] { "0", "1", "2", "3", "4", "5" });
+
+            ActivityTable = dt;
+        }
 
         /*
         public override string ToString()
