@@ -44,16 +44,16 @@ namespace HRIS
             }
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Category_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.RemovedItems.Count > 0)
             {
                 //MessageBox.Show("Dropdown list used to select: " + e.AddedItems[0]);
-                //Category category = SchoolDBAdpter.ParseEnum<Category>(e.AddedItems[0].ToString());
+                Category category = SchoolDBAdpter.ParseEnum<Category>(e.AddedItems[0].ToString());
                 //StaffController staContl = new StaffController();
-                //staContl.CategoryFilter(category);
+                staffController.CategoryFilter(category);
 
-                
+
             }
         }
     }

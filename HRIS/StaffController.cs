@@ -52,7 +52,7 @@ namespace HRIS.Controller
         public void CategoryFilter(Category category)
         {
             var selected = from Staff s in allStaffList
-                           where s.Category == category
+                           where category == Category.All || s.Category == category
                            select s;
             staffViewList.Clear();
             selected.ToList().ForEach( staffViewList.Add );

@@ -17,7 +17,8 @@
         </ObjectDataProvider>
         <!--To initiate the resource for template-->
         <!--
-       /////// <controller:StaffController x:Key="staffListKey" />
+        This line has been discarded.
+        <controller:StaffController x:Key="staffListKey" />
         -->
         <!--To use data template to fill in the staff list with specific format-->
         <DataTemplate x:Key="StaffListTemplate">

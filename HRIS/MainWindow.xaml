@@ -30,7 +30,7 @@
                             <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Filter Staff By Name: </TextBlock>
                             <TextBox Grid.Column="1" Grid.Row="0" Height="25"></TextBox>
                             <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Select Category:</TextBlock>
-                            <ComboBox ItemsSource="{Binding Source={StaticResource x_Category}}" SelectedIndex="0" Grid.Column="1" Grid.Row="1" Height="25" SelectionChanged="ComboBox_SelectionChanged"></ComboBox>
+                            <ComboBox ItemsSource="{Binding Source={StaticResource x_Category}}" SelectedIndex="0" Grid.Column="1" Grid.Row="1" Height="25" SelectionChanged="Category_SelectionChanged"></ComboBox>
                         </Grid>
                         <!--Use the ObjectDataprovider from App.xaml fill in the lsitbox-->
                         <!--
