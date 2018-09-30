@@ -8,35 +8,35 @@
         xmlns:controller="clr-namespace:HRIS.Controller"
         mc:Ignorable="d"
         Title="MainWindow" Height="620" Width="800">
-    
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="5*"/>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" HorizontalAlignment="Stretch">
-            <TabControl Margin="2" HorizontalAlignment="Stretch">
-                <TabItem Header="Staff List" HorizontalAlignment="Stretch" Width="94" Height="30">
-                    <StackPanel>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="50"/>
-                                <RowDefinition Height="30"/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Filter Staff By Name: </TextBlock>
-                            <TextBox x:Name="StaffNameFilter" Grid.Column="1" Grid.Row="0" Height="25" KeyUp="StaffNameFilter_KeyUp"/>
-                            <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Select Category:</TextBlock>
-                            <ComboBox ItemsSource="{Binding Source={StaticResource x_Category}}" SelectedIndex="0" Grid.Column="1" Grid.Row="1" Height="25" SelectionChanged="Category_SelectionChanged"></ComboBox>
-                        </Grid>
-                        <!--Use the ObjectDataprovider from App.xaml fill in the lsitbox-->
-                        <!--
+        <TabControl  Margin="2" HorizontalAlignment="Stretch">
+            <TabItem  Header="Staff List" HorizontalAlignment="Stretch" Width="94" Height="30">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" HorizontalAlignment="Stretch">
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Filter Staff By Name:</TextBlock>
+                                <TextBox x:Name="StaffNameFilter" Grid.Column="1" Grid.Row="0" Height="25" KeyUp="StaffNameFilter_KeyUp"/>
+                                <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Select Category:</TextBlock>
+                                <ComboBox ItemsSource="{Binding Source={StaticResource x_Category}}" SelectedIndex="0" Grid.Column="1" Grid.Row="1" Height="25" SelectionChanged="Category_SelectionChanged"></ComboBox>
+                            </Grid>
+                            <!--Use the ObjectDataprovider from App.xaml fill in the lsitbox-->
+                            <!--
                         <ListBox Name="StaffListBox" ItemsSource="{Binding Source={StaticResource x_StaffList}}" Margin="0,20,0,5" Height="213" SelectionChanged="StaffListBox_SelectionChanged"/>
                         -->
-                        <!--
+                            <!--
                         <ListBox ItemsSource="{Binding Source={StaticResource x_StaffList}}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
@@ -52,80 +52,79 @@
                             </ListBox.ItemTemplate>
                         </ListBox>
                         -->
-                        <ListBox x:Name="StaffListShowBox"
+                            <ListBox x:Name="StaffListShowBox"
                                  ItemsSource="{Binding Source={StaticResource staffListKey}}"
                                  ItemTemplate="{StaticResource StaffListTemplate}"
                                  Margin="10,40,10,8" 
                                  SelectionChanged="StaffListBox_SelectionChanged" Height="418"/>
 
-                    </StackPanel>
-                </TabItem>
-                <TabItem Header="Unit List"  HorizontalAlignment="Stretch" Width="94" Height="30">
-                    <TextBlock>swswswssw</TextBlock>
-                </TabItem>
-                <TabItem Header="Heat Map" HorizontalAlignment="Stretch" Width="94" Height="30">
-                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Not Required In KIT506 Assignment!</TextBlock>
-                </TabItem>
-            </TabControl>
-        </Grid>
-        <Grid Grid.Column="1">
-            
-            <Grid.RowDefinitions>
-                <RowDefinition Height="5*" />
-                <RowDefinition Height="7*" />
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="2*" />
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <Border BorderBrush="Black" BorderThickness="3" />
-                    
-                    <!--Fill in the selected detail panel-->
-                    <StackPanel x:Name="StaffDetailPanel" Orientation="Vertical" Margin="20,15,0,3">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <Label Content="Name:" />
-                            <Label Content="{Binding Path=StaffTitle}" />
-                            <Label Content="{Binding Path=GivenName}" />
-                            <Label Content="{Binding Path=FamilyName}" />
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label>Campus:</Label>
-                            <Label Content="{Binding Path=Campus}"></Label>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label>Phone No.:</Label>
-                            <Label Content="{Binding Path=Phone}"></Label>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label>Room Location:</Label>
-                            <Label Content="{Binding Path=Room}"></Label>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label>Email:</Label>
-                            <Label Content="{Binding Path=Email}"></Label>
-                        </StackPanel>
-                        <StackPanel>
-                            <Label>Consultation hours:</Label>
-                        </StackPanel>
-                        <ListBox ItemsSource="{Binding Path=StaffConsultationList}" Margin="0,0,10,10" Height="70" VerticalAlignment="Bottom"/>
-                    </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5*" />
+                            <RowDefinition Height="7*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Border BorderBrush="Black" BorderThickness="3" />
+
+                                <!--Fill in the selected detail panel-->
+                                <StackPanel x:Name="StaffDetailPanel" Orientation="Vertical" Margin="20,15,0,3">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <Label Content="Name:" />
+                                        <Label Content="{Binding Path=StaffTitle}" />
+                                        <Label Content="{Binding Path=GivenName}" />
+                                        <Label Content="{Binding Path=FamilyName}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label>Campus:</Label>
+                                        <Label Content="{Binding Path=Campus}"></Label>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label>Phone No.:</Label>
+                                        <Label Content="{Binding Path=Phone}"></Label>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label>Room Location:</Label>
+                                        <Label Content="{Binding Path=Room}"></Label>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label>Email:</Label>
+                                        <Label Content="{Binding Path=Email}"></Label>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <Label>Consultation hours:</Label>
+                                    </StackPanel>
+                                    <ListBox ItemsSource="{Binding Path=StaffConsultationList}" Margin="0,0,10,10" Height="70" VerticalAlignment="Bottom"/>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Border BorderBrush="red" BorderThickness="3" >
+                                    <Image x:Name="PhotoGrid" Source="{Binding Path=PhotoUrl}" />
+                                </Border>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Border BorderBrush="Blue" BorderThickness="3" >
+                                <Expander Header="Show/Hide Staff Activity Grid">
+                                    <Grid Background="Black"/>
+                                </Expander>
+                            </Border>
+                        </Grid>
+                    </Grid>
                 </Grid>
-                <Grid Grid.Column="1">
-                    <Border BorderBrush="red" BorderThickness="3" >
-                        <Image x:Name="PhotoGrid" Source="{Binding Path=PhotoUrl}" />
-                    </Border>
-                </Grid>
-            </Grid>
-            <Grid Grid.Row="1">
-                <Border BorderBrush="Blue" BorderThickness="3" >
-                    <Expander Header="Show/Hide Staff Activity Grid">
-                        <Grid Background="Black"/>
-                    </Expander>
-                </Border>
-            </Grid>
-        </Grid>
-        
+            </TabItem>
+            <TabItem Header="Unit List"  HorizontalAlignment="Stretch" Width="94" Height="30">
+                <TextBlock>swswswssw</TextBlock>
+            </TabItem>
+            <TabItem Header="Heat Map" HorizontalAlignment="Stretch" Width="94" Height="30">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Not Required In KIT506 Assignment!</TextBlock>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
