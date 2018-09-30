@@ -50,11 +50,15 @@ namespace HRIS
             {
                 //MessageBox.Show("Dropdown list used to select: " + e.AddedItems[0]);
                 Category category = SchoolDBAdpter.ParseEnum<Category>(e.AddedItems[0].ToString());
-                //StaffController staContl = new StaffController();
+                //use the fiter method in StaffController
                 staffController.CategoryFilter(category);
-
-
             }
+        }
+
+        private void StaffNameFilter_KeyUp(object sender, KeyEventArgs e)
+        {
+            //MessageBox.Show(StaffNameFilter.Text);
+            staffController.NameFilter(StaffNameFilter.Text);
         }
     }
 }

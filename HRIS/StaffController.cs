@@ -9,6 +9,8 @@ using HRIS;
 using HRIS.Teaching;
 using HRIS.Adapter;
 using System.Collections.ObjectModel;
+//using System.Data.Linq.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace HRIS.Controller
 {
@@ -51,11 +53,23 @@ namespace HRIS.Controller
         //to implement the category dropdown list filter
         public void CategoryFilter(Category category)
         {
-            var selected = from Staff s in allStaffList
+            var filteredList = from Staff s in allStaffList
                            where category == Category.All || s.Category == category
                            select s;
             staffViewList.Clear();
-            selected.ToList().ForEach( staffViewList.Add );
+            filteredList.ToList().ForEach( staffViewList.Add );
         }
+
+        public void NameFilter(string txt)
+        {
+            var filteredList = from Staff s in allStaffList
+                               where s.FamilyName.ToLower().Contains(txt.ToLower())
+                               || s.GivenName.ToLower().Contains(txt.ToLower())
+                               select s;
+
+            staffViewList.Clear();
+            filteredList.ToList().ForEach(staffViewList.Add);
+        }
+
     }
 }
