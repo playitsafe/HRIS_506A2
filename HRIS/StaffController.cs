@@ -9,7 +9,6 @@ using HRIS;
 using HRIS.Teaching;
 using HRIS.Adapter;
 using System.Collections.ObjectModel;
-//using System.Data.Linq.SqlClient;
 using System.Text.RegularExpressions;
 
 namespace HRIS.Controller
@@ -28,9 +27,14 @@ namespace HRIS.Controller
         private ObservableCollection<Staff> staffViewList;
         public ObservableCollection<Staff> StaffViewList { get { return staffViewList; } }
 
+        //to declare a current staff list under selected category
+        public List<Staff> CurrentCategoryList;
+
         //To create a *constructor* for Staff controller
         public StaffController()
         {
+            
+
             allStaffList = SchoolDBAdpter.LoadAllStaff();
             
             //add consultation time list for every staff
@@ -41,6 +45,9 @@ namespace HRIS.Controller
 
             //to allow list for changing later
             staffViewList = new ObservableCollection<Staff>(allStaffList);
+
+            //to assign current staff list of the same as StaffViewList
+            CurrentCategoryList = StaffViewList.ToList();
         }
 
         //a method to pull out the Observable staff list
@@ -58,15 +65,18 @@ namespace HRIS.Controller
                            select s;
             staffViewList.Clear();
             filteredList.ToList().ForEach( staffViewList.Add );
+
+            //to assign current staff list with category changed
+            CurrentCategoryList = StaffViewList.ToList();
         }
 
         public void NameFilter(string txt)
         {
-            var filteredList = from Staff s in allStaffList
+            //to filter key word through current shown list
+            var filteredList = from Staff s in CurrentCategoryList
                                where s.FamilyName.ToLower().Contains(txt.ToLower())
                                || s.GivenName.ToLower().Contains(txt.ToLower())
                                select s;
-
             staffViewList.Clear();
             filteredList.ToList().ForEach(staffViewList.Add);
         }
