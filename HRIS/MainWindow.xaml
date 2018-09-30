@@ -13,8 +13,8 @@
             <TabItem  Header="Staff List" HorizontalAlignment="Stretch" Width="94" Height="30">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0" HorizontalAlignment="Stretch">
                         <StackPanel>
@@ -67,52 +67,50 @@
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3*" />
                                 <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="1*" />
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
-                                <Border BorderBrush="Black" BorderThickness="3" />
 
                                 <!--Fill in the selected detail panel-->
                                 <StackPanel x:Name="StaffDetailPanel" Orientation="Vertical" Margin="20,15,0,3">
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                        <Label Content="Name:" />
-                                        <Label Content="{Binding Path=StaffTitle}" />
-                                        <Label Content="{Binding Path=GivenName}" />
-                                        <Label Content="{Binding Path=FamilyName}" />
+                                        <TextBlock Text="Name:  " />
+                                        <TextBlock Text="{Binding Path=StaffTitle}" />
+                                        <TextBlock Text=" " />
+                                        <TextBlock Text="{Binding Path=GivenName}" />
+                                        <TextBlock Text=" " />
+                                        <TextBlock Text="{Binding Path=FamilyName}" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <Label>Campus:</Label>
-                                        <Label Content="{Binding Path=Campus}"></Label>
+                                        <TextBlock Text="Campus: " />
+                                        <TextBlock Text="{Binding Path=Campus}" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <Label>Phone No.:</Label>
-                                        <Label Content="{Binding Path=Phone}"></Label>
+                                        <TextBlock Text="Phone No.: "/>
+                                        <TextBlock Text="{Binding Path=Phone}" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <Label>Room Location:</Label>
-                                        <Label Content="{Binding Path=Room}"></Label>
+                                        <TextBlock Text="Room Location: " />
+                                        <TextBlock Text="{Binding Path=Room}" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <Label>Email:</Label>
-                                        <Label Content="{Binding Path=Email}"></Label>
+                                        <TextBlock Text="Email: " Margin="0,0,0,10" />
+                                        <TextBlock Text="{Binding Path=Email}" />
                                     </StackPanel>
                                     <TextBlock Text="Consultation hours:" />
                                     <ListBox ItemsSource="{Binding Path=StaffConsultationList}" 
                                              Margin="0,0,10,10" Height="57" VerticalAlignment="Bottom"/>
                                     <TextBlock Text="Teaching This Semester:"/>
-                                    <ListBox  ItemsSource="{Binding Path=UnitTeachingList}"
-                                              Height="104" Margin="0,0,10,0"></ListBox>
+                                    <ListBox  ItemsSource="{Binding UnitTeachingList}"
+                                              Height="131" Margin="0,0,10,0"/>
                                 </StackPanel>
                             </Grid>
                             <Grid Grid.Column="1">
-                                <Border BorderBrush="red" BorderThickness="3" >
-                                    <Image x:Name="PhotoGrid" Source="{Binding Path=PhotoUrl}" />
-                                </Border>
+                                    <Image x:Name="PhotoGrid" Source="{Binding Path=PhotoUrl}" VerticalAlignment="Top"/>
                             </Grid>
                         </Grid>
                         <Grid Grid.Row="1" x:Name="ActivityGrid">
-                            <Border BorderBrush="Blue" BorderThickness="3" >
                                 <!--<Expander Header="Show/Hide Staff Activity Grid">-->
                                     <DataGrid  Height="90" 
                                               IsReadOnly="True"
@@ -126,13 +124,12 @@
                                         -->
                                     </DataGrid>
                                 <!--</Expander> -->
-                            </Border>
                         </Grid>
                     </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Unit List"  HorizontalAlignment="Stretch" Width="94" Height="30">
-                <TextBlock>swswswssw</TextBlock>
+                <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" Text="Under Construction..." /> 
             </TabItem>
             <TabItem Header="Heat Map" HorizontalAlignment="Stretch" Width="94" Height="30">
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Not Required In KIT506 Assignment!</TextBlock>
