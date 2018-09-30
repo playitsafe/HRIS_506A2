@@ -14,7 +14,6 @@ namespace HRIS.Controller
 {
     public enum Campus { Hobart, Launceston }
     public enum Category { All, Academic, Admin, Casual, Technical }
-    //public enum WeekDay { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday }
     public enum ClassType { Lecture, Tutorial, Practical, Workshop }
 
     public class StaffController
@@ -47,6 +46,16 @@ namespace HRIS.Controller
         public ObservableCollection<Staff> GetStaffViewList()
         {
             return StaffViewList;
+        }
+
+        //to implement the category dropdown list filter
+        public void CategoryFilter(Category category)
+        {
+            var selected = from Staff s in allStaffList
+                           where s.Category == category
+                           select s;
+            staffViewList.Clear();
+            selected.ToList().ForEach( staffViewList.Add );
         }
     }
 }

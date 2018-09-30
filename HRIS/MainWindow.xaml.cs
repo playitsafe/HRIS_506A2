@@ -24,9 +24,15 @@ namespace HRIS
     /// </summary>
     public partial class MainWindow : Window
     {
+        //to declare a resource key and intiate an object for using
+        private const string STAFF_LIST_KEY = "staffListKey";
+        private StaffController staffController;
+
         public MainWindow()
         {
             InitializeComponent();
+            // intiate an object for using
+            staffController = (StaffController)(Application.Current.FindResource(STAFF_LIST_KEY) as ObjectDataProvider).ObjectInstance;
         }
 
         private void StaffListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -35,6 +41,19 @@ namespace HRIS
             {
                 StaffDetailPanel.DataContext = e.AddedItems[0];
                 PhotoGrid.DataContext = e.AddedItems[0];
+            }
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.RemovedItems.Count > 0)
+            {
+                //MessageBox.Show("Dropdown list used to select: " + e.AddedItems[0]);
+                //Category category = SchoolDBAdpter.ParseEnum<Category>(e.AddedItems[0].ToString());
+                //StaffController staContl = new StaffController();
+                //staContl.CategoryFilter(category);
+
+                
             }
         }
     }

@@ -9,17 +9,16 @@
     <Application.Resources>
         <!--To use ObjectDataProvider to form source content of StaffViewList
             The GetStaffViewList returns ObservableCollection type of list-->
-        <!-- This part has been replaced with data template
+        <!-- This part has been replaced with data template-->
         <controller:StaffController x:Key="staffController" />
-        <ObjectDataProvider x:Key="x_StaffList"
+        <ObjectDataProvider x:Key="staffListKey"
                             ObjectInstance="{StaticResource staffController}"
                             MethodName="GetStaffViewList">
         </ObjectDataProvider>
-        -->
-
         <!--To initiate the resource for template-->
-        <controller:StaffController x:Key="StaffListResource" />
-
+        <!--
+       /////// <controller:StaffController x:Key="staffListKey" />
+        -->
         <!--To use data template to fill in the staff list with specific format-->
         <DataTemplate x:Key="StaffListTemplate">
             <StackPanel Orientation="Horizontal">
