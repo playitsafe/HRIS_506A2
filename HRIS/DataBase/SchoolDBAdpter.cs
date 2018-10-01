@@ -1,6 +1,6 @@
 ﻿using HRIS.Teaching;
 using HRIS.Controller;
-using HRIS;
+using HRIS.View;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;

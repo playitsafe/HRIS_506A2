@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HRIS.Controller;
 using HRIS.Adapter;
-using HRIS;
+using HRIS.View;
 using System.Data;
 
 namespace HRIS.Teaching

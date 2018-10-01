@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:controller="clr-namespace:HRIS.Controller"
              xmlns:entity="clr-namespace:HRIS.Teaching"
-             xmlns:local="clr-namespace:HRIS"
+             xmlns:local="clr-namespace:HRIS.View"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              StartupUri="MainWindow.xaml">
     <Application.Resources>

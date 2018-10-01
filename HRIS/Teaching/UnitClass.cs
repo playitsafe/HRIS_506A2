@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HRIS;
+using HRIS.View;
 using HRIS.Controller;
 using HRIS.Adapter;
 

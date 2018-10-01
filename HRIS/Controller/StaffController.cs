@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using MySql.Data.Types;
-using HRIS;
+using HRIS.View;
 using HRIS.Teaching;
 using HRIS.Adapter;
 using System.Collections.ObjectModel;

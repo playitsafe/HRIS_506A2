@@ -17,7 +17,7 @@ using HRIS.Teaching;
 using HRIS.Controller;
 
 
-namespace HRIS
+namespace HRIS.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
