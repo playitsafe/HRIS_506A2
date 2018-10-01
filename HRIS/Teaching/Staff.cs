@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using HRIS.Controller;
 using HRIS.Adapter;
 using HRIS.View;
+using HRIS.Teaching;
 using System.Data;
 
 namespace HRIS.Teaching
@@ -26,8 +27,11 @@ namespace HRIS.Teaching
 
         public List<Consultation> StaffConsultationList { get; set; }
         public List<UnitClass> UnitTeachingList { get; set; }
+        //daclare a list for every hour activity across Mon-Fri
+        public List<WeeklyAvailability> WeeklyAvailabilityList { get; set; }
+        
 
-        public DataTable ActivityTable { get; set; }
+        //public DataTable ActivityTable { get; set; }
 
 
 
@@ -41,7 +45,14 @@ namespace HRIS.Teaching
             dt.Columns.Add("Wednesday", typeof(string));
             dt.Columns.Add("Thursday", typeof(string));
             dt.Columns.Add("Friday", typeof(string));
-            dt.Rows.Add(new string[] { "0", "1", "2", "3", "4", "5" });
+            dt.Rows.Add(new string[] { "9:00-10:00", "1", "2", "3", "4", "5" });
+            dt.Rows.Add(new string[] { "10:00-11:00", "1", "2", "3", "4", "5" });
+            dt.Rows.Add(new string[] { "11:00-12:00", "1", "2", "3", "4", "5" });
+            dt.Rows.Add(new string[] { "12:00-13:00", "1", "2", "3", "4", "5" });
+            dt.Rows.Add(new string[] { "13:00-14:00", "1", "2", "3", "4", "5" });
+            dt.Rows.Add(new string[] { "14:00-15:00", "1", "2", "3", "4", "5" });
+            dt.Rows.Add(new string[] { "15:00-16:00", "1", "2", "3", "4", "5" });
+            dt.Rows.Add(new string[] { "16:00-17:00", "1", "2", "3", "4", "5" });
 
             ActivityTable = dt;
         }

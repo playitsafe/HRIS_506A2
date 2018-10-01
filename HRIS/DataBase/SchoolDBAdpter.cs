@@ -98,7 +98,6 @@ namespace HRIS.Adapter
         public static List<Consultation> LoadConsultationList(int id)
         {
             List<Consultation> consultationList = new List<Consultation>();
-            //List<UnitClass> unitTeachingList = new List<UnitClass>();
 
             MySqlConnection conn = ConnAlacritas();
             MySqlDataReader rdr = null;
@@ -183,6 +182,58 @@ namespace HRIS.Adapter
             }
 
             return unitTeachingList;
+        }
+
+        //query teach time of whole week of each staff
+        public static List<WeeklyAvailability> LoadWeeklyTeachingTime(int id)
+        {
+            //Firstly create list of 8 hours of each day with all free activity as default.
+            List<WeeklyAvailability> weeklyAvailabilityList = new List<WeeklyAvailability>();
+            for (int i = 9; i < 17; i++)
+            {
+                weeklyAvailabilityList.Add(new WeeklyAvailability { StartTime = i});
+            }
+
+            MySqlConnection conn = ConnAlacritas();
+            MySqlDataReader rdr = null;
+
+            try
+            {
+                conn.Open();
+                MySqlCommand sqlCmd = new MySqlCommand("select day, start, end from class where campus ='Hobart' and staff=?id", conn);
+                sqlCmd.Parameters.AddWithValue("id", id);
+                rdr = sqlCmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    foreach (var w in weeklyAvailabilityList)
+                    {
+                        //This code is for matching the start hour in query result with hour column of weeklyAvailabilityList
+                        if (w.StartTime == Int32.Parse(rdr.GetString(1).ToString().Substring(0, 1)))
+                        {
+                            int numOfWeekDay = (int)ParseEnum<DayOfWeek>(rdr.GetString(0));
+                            w.MonToFri_Activity[(numOfWeekDay - 1)] = "Teaching";
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+            return weeklyAvailabilityList;
         }
     }
 }

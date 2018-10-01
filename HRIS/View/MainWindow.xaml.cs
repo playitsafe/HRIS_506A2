@@ -41,7 +41,22 @@ namespace HRIS.View
             {
                 StaffDetailPanel.DataContext = e.AddedItems[0];
                 PhotoGrid.DataContext = e.AddedItems[0];
-                ActivityGrid.DataContext = e.AddedItems[0];
+                //ActivityGrid.DataContext = e.AddedItems[0];
+                //MessageBox.Show(e.AddedItems[0].ToString());
+                //ActivityGrid.Columns.Clear();
+                ActivityGrid.Items.Clear();
+                ActivityGrid.Items.Refresh();
+                Staff staff = e.AddedItems[0] as Staff;
+                //SchoolDBAdpter.LoadWeeklyTeachingTime(staff.StaffId);
+                if (staff != null)
+                {
+                    //MessageBox.Show(staff.StaffId.ToString());
+                    for (int i = 0; i < 8; i++)
+                    {
+                        WeeklyAvailability weeklyAvailability = staff.WeeklyAvailabilityList[i];
+                        ActivityGrid.Items.Add(weeklyAvailability);
+                    }
+                }
             }
         }
 

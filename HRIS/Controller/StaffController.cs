@@ -16,6 +16,7 @@ namespace HRIS.Controller
     public enum Campus { Hobart, Launceston }
     public enum Category { All, Academic, Admin, Casual, Technical }
     public enum ClassType { Lecture, Tutorial, Practical, Workshop }
+    public enum Availability { Free, Consultation, Teaching }
 
     public class StaffController
     {
@@ -33,8 +34,6 @@ namespace HRIS.Controller
         //To create a *constructor* for Staff controller
         public StaffController()
         {
-            
-
             allStaffList = SchoolDBAdpter.LoadAllStaff();
             
             foreach (Staff s in allStaffList)
@@ -44,8 +43,10 @@ namespace HRIS.Controller
 
                 //add teaching list for every staff
                 s.UnitTeachingList = SchoolDBAdpter.LoadUnitTeachingList(s.StaffId);
-            }
 
+                //add teaching time for every staff
+                s.WeeklyAvailabilityList = SchoolDBAdpter.LoadWeeklyTeachingTime(s.StaffId);
+            }
 
             //to allow list for changing later
             staffViewList = new ObservableCollection<Staff>(allStaffList);
