@@ -29,6 +29,9 @@ namespace HRIS.Teaching
 
         public DataTable ActivityTable { get; set; }
 
+
+
+        /*
         public Staff()
         {
             DataTable dt = new DataTable();
@@ -42,6 +45,7 @@ namespace HRIS.Teaching
 
             ActivityTable = dt;
         }
+        */
 
         /*
         public override string ToString()

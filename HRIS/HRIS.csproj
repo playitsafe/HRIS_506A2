@@ -56,25 +56,25 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <ApplicationDefinition Include="View\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Consultation.cs" />
-    <Compile Include="SchoolDBAdpter.cs" />
-    <Compile Include="Staff.cs" />
-    <Compile Include="StaffController.cs" />
-    <Compile Include="Unit.cs" />
-    <Compile Include="UnitClass.cs" />
-    <Page Include="MainWindow.xaml">
+    <Compile Include="Teaching\Consultation.cs" />
+    <Compile Include="DataBase\SchoolDBAdpter.cs" />
+    <Compile Include="Teaching\Staff.cs" />
+    <Compile Include="Controller\StaffController.cs" />
+    <Compile Include="Teaching\Unit.cs" />
+    <Compile Include="Teaching\UnitClass.cs" />
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
+    <Compile Include="View\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -103,7 +103,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="View\App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

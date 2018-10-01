@@ -4,11 +4,8 @@ C:\Users\playi\Desktop\HRIS\HRIS\HRIS\bin\Debug\HRIS.pdb
 C:\Users\playi\Desktop\HRIS\HRIS\HRIS\bin\Debug\MySql.Data.dll
 C:\Users\playi\Desktop\HRIS\HRIS\HRIS\bin\Debug\MySql.Data.xml
 C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\HRIS.csprojAssemblyReference.cache
-C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\MainWindow.g.cs
-C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\App.g.cs
 C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\HRIS_MarkupCompile.cache
 C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\HRIS_MarkupCompile.lref
-C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\MainWindow.baml
 C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\HRIS.g.resources
 C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\HRIS.Properties.Resources.resources
 C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\HRIS.csproj.GenerateResource.cache
@@ -16,5 +13,8 @@ C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\HRIS.csproj.CoreCompileInputs.ca
 C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\HRIS.csproj.CopyComplete
 C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\HRIS.exe
 C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\HRIS.pdb
-C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\App.baml
 C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\View\MainWindow.g.cs
+C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\View\App.g.cs
+C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\View\App.baml
+C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\View\MainWindow.baml
