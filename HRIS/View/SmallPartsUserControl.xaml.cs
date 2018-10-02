@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HRIS.Adapter;
+using HRIS.Controller;
+using HRIS.Teaching;
+using HRIS.View;
 
 namespace HRIS.View
 {
@@ -24,5 +28,15 @@ namespace HRIS.View
         {
             InitializeComponent();
         }
+        /*
+        private void Campus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.RemovedItems.Count > 0)
+            {
+                //MessageBox.Show(CampusComboBox.SelectedValue.ToString());
+            }
+
+        }
+        */
     }
 }

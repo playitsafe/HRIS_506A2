@@ -116,7 +116,7 @@
                         </Grid>
                         <Grid Grid.Row="1">
                             <Expander Header="Show/Hide Staff Activity Grid">
-                                <DataGrid x:Name="ActivityGrid_Hobart" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                <DataGrid x:Name="ActivityGrid" HorizontalAlignment="Left" VerticalAlignment="Top"
                                           Width="500" Height="200">
                                     <DataGrid.Resources>
                                         <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -187,7 +187,9 @@
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <Label Content="Select Campus: " />
-                                        <local:SmallPartsUserControl Margin="11,0,0,0" />
+                                        <ComboBox x:Name="CampusComboBox" Width="150" ItemsSource="{Binding Source={StaticResource x_Campus}}" SelectedIndex="0" Grid.Column="1" Grid.Row="1" Height="25" Margin="0,0,10,2" VerticalAlignment="Bottom" SelectionChanged="Campus_SelectionChanged" >
+                                            
+                                        </ComboBox>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <Label Content="Unit Coordinator: " />

@@ -16,5 +16,7 @@ namespace HRIS.Teaching
         public int CoordinatorId { get; set; }
         public string CoordinatorName { get; set; }
         public Campus Campus { get; set; }
+
+        public List<UnitClass> WeeklyUnitClassList { get; set; }
     }
 }

@@ -54,6 +54,7 @@
                 <x:Type TypeName="controller:Category" />
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
+        
         <ObjectDataProvider x:Key="x_Campus"
                             ObjectType="{x:Type sys:Enum}"
                             MethodName="GetValues">

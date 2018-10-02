@@ -12,6 +12,11 @@ namespace HRIS.Controller
 {
     public class UnitController
     {
+        public static T ParseEnum<T>(string value)
+        {
+            return (T)Enum.Parse(typeof(T), value);
+        }
+
         //to create a private property and a getter for UnitList
         private List<Unit> allUnitList;
         public List<Unit> AllUnitList { get { return allUnitList; } }
@@ -30,7 +35,9 @@ namespace HRIS.Controller
 
             foreach (Unit u in allUnitList)
             {
-
+                //MainWindow win = new MainWindow();
+                //Campus campus = ParseEnum<Campus>(win.CampusComboBox.SelectedValue.ToString());
+                u.WeeklyUnitClassList = SchoolDBAdpter.LoadWeeklyUnitClassList(Campus.Hobart, u.UnitCode);
             }
 
             //to allow list for changing later

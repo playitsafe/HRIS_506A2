@@ -381,5 +381,73 @@ namespace HRIS.Adapter
             }
             return AllUnitList;
         }
+
+        //query time table from DB for every unit
+        public static List<UnitClass> LoadWeeklyUnitClassList(Campus campus, string unit_code)
+        {
+            //Firstly create list of 8 hours of each day with all free activity as default.
+            List<UnitClass> weeklyUnitClassList = new List<UnitClass>();
+
+            for (int i = 9; i < 17; i++)
+            {
+                weeklyUnitClassList.Add(new UnitClass { Start = i });
+            }
+
+            MySqlConnection conn = ConnAlacritas();
+            MySqlDataReader rdr = null;
+
+            try
+            {
+                conn.Open();
+                
+                MySqlCommand queryForClass = new MySqlCommand("select c.day, c.start, c.end, c.type, c.room, concat(s.given_name, ' ', s.family_name) as teacher from class c join staff s on c.staff=s.id where c.campus=?campus and c.unit_code=?unit_code", conn);
+                queryForClass.Parameters.AddWithValue("campus", campus);
+                queryForClass.Parameters.AddWithValue("unit_code", unit_code);
+                rdr = queryForClass.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    ClassType classType = ParseEnum<ClassType>(rdr.GetString(3));
+                    String room = rdr.GetString(4);
+                    string teacher = rdr.GetString(5);
+
+                    int start = Int32.Parse(rdr.GetString(1).ToString().Substring(0, 2));
+                    int end = Int32.Parse(rdr.GetString(2).ToString().Substring(0, 2));
+                    int consecutive = end - start;
+
+                    //to loop if unitClass is several hours consecutive
+                    for (int i = 0; i < consecutive; i++)
+                    {
+                        foreach (var w in weeklyUnitClassList)
+                        {
+                            //This code is for matching the start hour in query result with hour column of weeklyUnitClassList
+                            if (w.Start == (start + i))
+                            {
+                                int indexOfWeekDay = (int)ParseEnum<DayOfWeek>(rdr.GetString(0));
+                                w.MonToFri_Activity[(indexOfWeekDay - 1)] = $"{classType}"; //$"{classType}\n{room}\n{teacher}";
+                            }
+                        }
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+            return weeklyUnitClassList;
+        }
     }
 }

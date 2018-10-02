@@ -49,8 +49,8 @@ namespace HRIS.View
                 //ActivityGrid.DataContext = e.AddedItems[0];
                 //MessageBox.Show(e.AddedItems[0].ToString());
                 //ActivityGrid.Columns.Clear();
-                ActivityGrid_Hobart.Items.Clear();
-                ActivityGrid_Hobart.Items.Refresh();
+                ActivityGrid.Items.Clear();
+                ActivityGrid.Items.Refresh();
                 Staff staff = e.AddedItems[0] as Staff;
                 //SchoolDBAdpter.LoadWeeklyTeachingTime(staff.StaffId);
                 if (staff != null)
@@ -59,7 +59,7 @@ namespace HRIS.View
                     for (int i = 0; i < 8; i++)
                     {
                         //WeeklyAvailability weeklyAvailability = staff.WeeklyAvailabilityList[i];
-                        ActivityGrid_Hobart.Items.Add(staff.WeeklyAvailabilityList[i]);
+                        ActivityGrid.Items.Add(staff.WeeklyAvailabilityList[i]);
                     }
                 }
             }
@@ -94,26 +94,50 @@ namespace HRIS.View
                 //ActivityGrid.DataContext = e.AddedItems[0];
                 //MessageBox.Show(e.AddedItems[0].ToString());
                 //ActivityGrid.Columns.Clear();
-                ActivityGrid_Hobart.Items.Clear();
-                ActivityGrid_Hobart.Items.Refresh();
-                Staff staff = e.AddedItems[0] as Staff;
-                //SchoolDBAdpter.LoadWeeklyTeachingTime(staff.StaffId);
-                if (staff != null)
+                */
+
+                UnitTimeTable.Items.Clear();
+                UnitTimeTable.Items.Refresh();
+                Unit unit = e.AddedItems[0] as Unit;
+
+                if (unit != null)
                 {
                     //MessageBox.Show(staff.StaffId.ToString());
                     for (int i = 0; i < 8; i++)
                     {
                         //WeeklyAvailability weeklyAvailability = staff.WeeklyAvailabilityList[i];
-                        ActivityGrid_Hobart.Items.Add(staff.WeeklyAvailabilityList[i]);
+                        UnitTimeTable.Items.Add(unit.WeeklyUnitClassList[i]);
                     }
                 }
-                */
             }
         }
 
         private void UnitFilter_KeyUp(object sender, KeyEventArgs e)
         {
             unitController.UnitNameFilter(UnitFilter.Text);
+        }
+
+        //Campus_SelectionChanged
+        private void Campus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.RemovedItems.Count > 0)
+            {
+                //MessageBox.Show(CampusComboBox.SelectedValue.ToString());
+                UnitTimeTable.Items.Clear();
+                UnitTimeTable.Items.Refresh();
+                Unit unit = e.AddedItems[0] as Unit;
+
+                if (unit != null)
+                {
+                    //MessageBox.Show(staff.StaffId.ToString());
+                    for (int i = 0; i < 8; i++)
+                    {
+                        //WeeklyAvailability weeklyAvailability = staff.WeeklyAvailabilityList[i];
+                        UnitTimeTable.Items.Add(unit.WeeklyUnitClassList[i]);
+                    }
+                }
+            }
+
         }
     }
 }
