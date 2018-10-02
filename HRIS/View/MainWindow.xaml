@@ -111,7 +111,7 @@
                             </Grid>
                         </Grid>
                         <Grid Grid.Row="1">
-                            <Expander Header="Show/Hide Staff Activity Grid">
+                            <!--<Expander Header="Show/Hide Staff Activity Grid">-->
                                 <DataGrid x:Name="ActivityGrid" HorizontalAlignment="Left" VerticalAlignment="Top"
                                           Width="500" Height="200">
                                     <DataGrid.Resources>
@@ -125,24 +125,19 @@
                                         <DataGridTextColumn Header="Time" 
                                                             Binding="{Binding StartTime}" Width="83"/>
                                         <DataGridTextColumn Header="Monday"
-                                                            Binding="{Binding MonToFri_Activity[0]}"
-                                                            Width="83"/>
+                                                            Binding="{Binding Mon_Activity }" Width="83"/>
                                         <DataGridTextColumn Header="Tuesday"
-                                                            Binding="{Binding MonToFri_Activity[1]}"
-                                                            Width="83"/>
+                                                            Binding="{Binding Tue_Activity}" Width="83"/>
                                         <DataGridTextColumn Header="Wednesday" 
-                                                            Binding="{Binding MonToFri_Activity[2]}"
-                                                            Width="83"/>
+                                                            Binding="{Binding Wed_Activity}" Width="83"/>
                                         <DataGridTextColumn Header="Thursday" 
-                                                            Binding="{Binding MonToFri_Activity[3]}"
-                                                            Width="83"/>
+                                                            Binding="{Binding Thu_Activity}" Width="83"/>
                                         <DataGridTextColumn Header="Friday" 
-                                                            Binding="{Binding MonToFri_Activity[4]}"
-                                                            Width="83"/>
+                                                            Binding="{Binding Fri_Activity}" Width="83"/>
                                     </DataGrid.Columns>
                                     
                                 </DataGrid>
-                            </Expander>
+                            <!--</Expander> -->
                         </Grid>
                     </Grid>
                 </Grid>

@@ -206,15 +206,24 @@ namespace HRIS.Adapter
 
                 while (rdr.Read())
                 {
-                    foreach (var w in weeklyAvailabilityList)
+                    int start = Int32.Parse(rdr.GetString(1).ToString().Substring(0, 2));
+                    int end = Int32.Parse(rdr.GetString(2).ToString().Substring(0, 2));
+                    int consecutive = end - start;
+
+                    //to loop if class is several hours consecutive
+                    for (int i = 0; i < consecutive; i++)
                     {
-                        //This code is for matching the start hour in query result with hour column of weeklyAvailabilityList
-                        if (w.StartTime == Int32.Parse(rdr.GetString(1).ToString().Substring(0, 1)))
+                        foreach (var w in weeklyAvailabilityList)
                         {
-                            int numOfWeekDay = (int)ParseEnum<DayOfWeek>(rdr.GetString(0));
-                            w.MonToFri_Activity[(numOfWeekDay - 1)] = "Teaching";
+                            //This code is for matching the start hour in query result with hour column of weeklyAvailabilityList
+                            if (w.StartTime == (start + i))
+                            {
+                                int indexOfWeekDay = (int)ParseEnum<DayOfWeek>(rdr.GetString(0));
+                                w.MonToFri_Activity[(indexOfWeekDay - 1)] = "Teaching";
+                            }
                         }
                     }
+                    
                 }
             }
             catch (Exception e)

@@ -11,15 +11,15 @@ namespace HRIS.Teaching
     public class WeeklyAvailability
     {
         public int StartTime { get; set; }
-        /*
-        public Availability Monday = Availability.Free;
-        public Availability Tuesday = Availability.Free;
-        public Availability Wednesday = Availability.Free;
-        public Availability Thursday = Availability.Free;
-        public Availability Friday = Availability.Free;
-        */
+        public int EndTime { get; set; }
+
         public string[] MonToFri_Activity = { "Free", "Free", "Free", "Free", "Free" };
 
+        public string Mon_Activity { get { return MonToFri_Activity[0]; } }
+        public string Tue_Activity { get { return MonToFri_Activity[1]; } }
+        public string Wed_Activity { get { return MonToFri_Activity[2]; } }
+        public string Thu_Activity { get { return MonToFri_Activity[3]; } }
+        public string Fri_Activity { get { return MonToFri_Activity[4]; } }
 
     }
 }
