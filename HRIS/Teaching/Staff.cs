@@ -57,7 +57,6 @@ namespace HRIS.Teaching
             ActivityTable = dt;
         }
         */
-
         /*
         public override string ToString()
         {

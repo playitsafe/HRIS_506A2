@@ -123,7 +123,7 @@
                                     </DataGrid.Resources>
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Time" 
-                                                            Binding="{Binding StartTime}" Width="83"/>
+                                                            Binding="{Binding RowHeader }" Width="83"/>
                                         <DataGridTextColumn Header="Monday"
                                                             Binding="{Binding Mon_Activity }" Width="83"/>
                                         <DataGridTextColumn Header="Tuesday"

@@ -11,7 +11,7 @@ namespace HRIS.Teaching
     public class WeeklyAvailability
     {
         public int StartTime { get; set; }
-        public int EndTime { get; set; }
+        public string HourRow = "StartTime - EndTime";
 
         public string[] MonToFri_Activity = { "Free", "Free", "Free", "Free", "Free" };
 
@@ -21,5 +21,6 @@ namespace HRIS.Teaching
         public string Thu_Activity { get { return MonToFri_Activity[3]; } }
         public string Fri_Activity { get { return MonToFri_Activity[4]; } }
 
+        public string RowHeader{ get { return $"{StartTime}:00 - {StartTime + 1}:00"; } }
     }
 }

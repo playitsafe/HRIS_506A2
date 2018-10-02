@@ -189,6 +189,7 @@ namespace HRIS.Adapter
         {
             //Firstly create list of 8 hours of each day with all free activity as default.
             List<WeeklyAvailability> weeklyAvailabilityList = new List<WeeklyAvailability>();
+
             for (int i = 9; i < 17; i++)
             {
                 weeklyAvailabilityList.Add(new WeeklyAvailability { StartTime = i});
@@ -200,9 +201,9 @@ namespace HRIS.Adapter
             try
             {
                 conn.Open();
-                MySqlCommand sqlCmd = new MySqlCommand("select day, start, end from class where campus ='Hobart' and staff=?id", conn);
-                sqlCmd.Parameters.AddWithValue("id", id);
-                rdr = sqlCmd.ExecuteReader();
+                MySqlCommand queryForTeaching = new MySqlCommand("select day, start, end from class where campus ='Hobart' and staff=?id", conn);
+                queryForTeaching.Parameters.AddWithValue("id", id);
+                rdr = queryForTeaching.ExecuteReader();
 
                 while (rdr.Read())
                 {
