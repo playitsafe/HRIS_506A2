@@ -53,7 +53,7 @@ namespace HRIS.Adapter
             try
             {
                 conn.Open();
-                MySqlCommand sqlCmd = new MySqlCommand("select id, family_name, given_name, title, campus, phone, room, email, photo, category from staff", conn);
+                MySqlCommand sqlCmd = new MySqlCommand("select id, family_name, given_name, title, campus, phone, room, email, photo, category from staff order by family_name, given_name", conn);
                 rdr = sqlCmd.ExecuteReader();
 
                 //pull all staff in DBtable to AllStaffList Object

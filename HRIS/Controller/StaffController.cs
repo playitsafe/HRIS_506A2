@@ -66,8 +66,10 @@ namespace HRIS.Controller
         public void CategoryFilter(Category category)
         {
             var filteredList = from Staff s in allStaffList
-                           where category == Category.All || s.Category == category
-                           select s;
+                               where category == Category.All || s.Category == category
+                               select s;
+            //to sort the order by family name, then given name
+            filteredList.OrderBy(s => s.FamilyName).ThenBy(s => s.GivenName);
             staffViewList.Clear();
             filteredList.ToList().ForEach( staffViewList.Add );
 
@@ -82,6 +84,8 @@ namespace HRIS.Controller
                                where s.FamilyName.ToLower().Contains(txt.ToLower())
                                || s.GivenName.ToLower().Contains(txt.ToLower())
                                select s;
+            //to sort the order by family name, then given name
+            filteredList.OrderBy(s => s.FamilyName).ThenBy(s => s.GivenName);
             staffViewList.Clear();
             filteredList.ToList().ForEach(staffViewList.Add);
         }
