@@ -111,8 +111,8 @@
                             </Grid>
                         </Grid>
                         <Grid Grid.Row="1">
-                            <!--<Expander Header="Show/Hide Staff Activity Grid">-->
-                                <DataGrid x:Name="ActivityGrid" HorizontalAlignment="Left" VerticalAlignment="Top"
+                            <Expander Header="Show/Hide Staff Activity Grid">
+                                <DataGrid x:Name="ActivityGrid_Hobart" HorizontalAlignment="Left" VerticalAlignment="Top"
                                           Width="500" Height="200">
                                     <DataGrid.Resources>
                                         <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -135,9 +135,9 @@
                                         <DataGridTextColumn Header="Friday" 
                                                             Binding="{Binding Fri_Activity}" Width="83"/>
                                     </DataGrid.Columns>
-                                    
+
                                 </DataGrid>
-                            <!--</Expander> -->
+                            </Expander>
                         </Grid>
                     </Grid>
                 </Grid>

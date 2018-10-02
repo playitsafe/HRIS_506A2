@@ -44,8 +44,8 @@ namespace HRIS.View
                 //ActivityGrid.DataContext = e.AddedItems[0];
                 //MessageBox.Show(e.AddedItems[0].ToString());
                 //ActivityGrid.Columns.Clear();
-                ActivityGrid.Items.Clear();
-                ActivityGrid.Items.Refresh();
+                ActivityGrid_Hobart.Items.Clear();
+                ActivityGrid_Hobart.Items.Refresh();
                 Staff staff = e.AddedItems[0] as Staff;
                 //SchoolDBAdpter.LoadWeeklyTeachingTime(staff.StaffId);
                 if (staff != null)
@@ -54,7 +54,7 @@ namespace HRIS.View
                     for (int i = 0; i < 8; i++)
                     {
                         //WeeklyAvailability weeklyAvailability = staff.WeeklyAvailabilityList[i];
-                        ActivityGrid.Items.Add(staff.WeeklyAvailabilityList[i]);
+                        ActivityGrid_Hobart.Items.Add(staff.WeeklyAvailabilityList[i]);
                     }
                 }
             }
