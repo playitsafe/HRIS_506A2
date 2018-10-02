@@ -60,12 +60,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controller\UnitController.cs" />
     <Compile Include="Teaching\Consultation.cs" />
     <Compile Include="DataBase\SchoolDBAdpter.cs" />
     <Compile Include="Teaching\Staff.cs" />
     <Compile Include="Controller\StaffController.cs" />
     <Compile Include="Teaching\Unit.cs" />
     <Compile Include="Teaching\UnitClass.cs" />
+    <Compile Include="View\SmallPartsUserControl.xaml.cs">
+      <DependentUpon>SmallPartsUserControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -79,6 +83,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\SmallPartsUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

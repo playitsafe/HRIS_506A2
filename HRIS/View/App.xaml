@@ -15,6 +15,12 @@
                             ObjectInstance="{StaticResource staffController}"
                             MethodName="GetStaffViewList">
         </ObjectDataProvider>
+        <controller:UnitController x:Key="unitController" />
+        <ObjectDataProvider x:Key="unitListKey"
+                            ObjectInstance="{StaticResource unitController}"
+                            MethodName="GetUnitViewList">
+        </ObjectDataProvider>
+        
         <!--To initiate the resource for template-->
         <!--
         This line has been discarded.
@@ -31,13 +37,28 @@
                 <TextBlock Text=")" />
             </StackPanel>
         </DataTemplate>
-        
+
+        <DataTemplate x:Key="UnitListTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=UnitCode}" />
+                <TextBlock Text=" " />
+                <TextBlock Text="{Binding Path=UnitTitle}" />
+            </StackPanel>
+        </DataTemplate>
+
         <!--To use Enum Category for the dropdown list-->
         <ObjectDataProvider x:Key="x_Category"
                             ObjectType="{x:Type sys:Enum}"
                             MethodName="GetValues">
             <ObjectDataProvider.MethodParameters>
                 <x:Type TypeName="controller:Category" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="x_Campus"
+                            ObjectType="{x:Type sys:Enum}"
+                            MethodName="GetValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="controller:Campus" />
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         

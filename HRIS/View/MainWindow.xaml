@@ -7,7 +7,7 @@
         xmlns:entity="clr-namespace:HRIS.Teaching"
         xmlns:controller="clr-namespace:HRIS.Controller"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="800">
+        Title="HRIS - KIT506 Assignment2 - By Group k506h_a2_m1300_9" Height="670" Width="840">
     <Grid>
         <TabControl  Margin="2" HorizontalAlignment="Stretch">
             <TabItem  Header="Staff List" HorizontalAlignment="Stretch" Width="94" Height="30">
@@ -17,7 +17,11 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0" HorizontalAlignment="Stretch">
-                        <StackPanel>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="75*"/>
+                            <ColumnDefinition Width="62*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.ColumnSpan="2">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -145,97 +149,86 @@
             <TabItem Header="Unit List"  HorizontalAlignment="Stretch" Width="94" Height="30">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="4*"/>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0" HorizontalAlignment="Stretch">
                         <StackPanel>
-                            <Grid>
+                            <Grid Margin="20,30,0,0">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="5*"/>
                                 </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="50"/>
-                                    <RowDefinition Height="30"/>
-                                </Grid.RowDefinitions>
-                                <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Filter Staff By Name:</TextBlock>
-                                <TextBox x:Name="UnitFilter" Grid.Column="1" Grid.Row="0" Height="25" KeyUp="StaffNameFilter_KeyUp" Margin="0,0,10,0"/>
-                                <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Select Category:</TextBlock>
-                                <ComboBox ItemsSource="{Binding Source={StaticResource x_Category}}" SelectedIndex="0" Grid.Column="1" Grid.Row="1" Height="25" SelectionChanged="Category_SelectionChanged" Margin="0,0,10,0"></ComboBox>
+                                <TextBlock Grid.Column="0" VerticalAlignment="Center">Filter Unit By Name:</TextBlock>
+                                <TextBox x:Name="UnitFilter" Grid.Column="1" Height="25" Margin="0,0,10,0" KeyUp="UnitFilter_KeyUp"/>
+
                             </Grid>
-                            
+
                             <ListBox x:Name="UnitListShowBox"
-                                 ItemsSource="{Binding Source={StaticResource staffListKey}}"
-                                 ItemTemplate="{StaticResource StaffListTemplate}"
+                                 ItemsSource="{Binding Source={StaticResource unitListKey}}"
+                                 ItemTemplate="{StaticResource UnitListTemplate}"
                                  Margin="10,40,10,8" 
-                                 SelectionChanged="StaffListBox_SelectionChanged" Height="448"/>
+                                 SelectionChanged="UnitListBox_SelectionChanged" Height="448"/>
                         </StackPanel>
                     </Grid>
-                    <Grid Grid.Column="1">
+                    <!--Fill in the selected detail panel-->
+                    <Grid Grid.Column="1" x:Name="UnitDetailPanel">
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
                             <RowDefinition Height="3*" />
-                            <RowDefinition Height="2*" />
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*" />
-                                <ColumnDefinition Width="1*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0">
-
-                                <!--Fill in the selected detail panel-->
-                                <StackPanel x:Name="UnitDetailPanel" Orientation="Vertical" Margin="20,15,0,3">
+                            <Grid>
+                                <StackPanel Orientation="Vertical" Margin="20,15,0,3">
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                        <TextBlock Text="Name:  " />
-                                        <TextBlock Text="{Binding Path=StaffTitle}" />
-                                        <TextBlock Text=" " />
-                                        <TextBlock Text="{Binding Path=GivenName}" />
-                                        <TextBlock Text=" " />
-                                        <TextBlock Text="{Binding Path=FamilyName}" />
+                                        <Label Content="{Binding Path=UnitCode}" />
+                                        <Label Content=" " />
+                                        <Label Content="{Binding Path=UnitTitle}" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Campus: " />
-                                        <TextBlock Text="{Binding Path=Campus}" />
+                                        <Label Content="Select Campus: " />
+                                        <local:SmallPartsUserControl Margin="11,0,0,0" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Phone No.: "/>
-                                        <TextBlock Text="{Binding Path=Phone}" />
+                                        <Label Content="Unit Coordinator: " />
+                                        <Label Content="{Binding Path=CoordinatorName}" />
+                                        
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Room Location: " />
-                                        <TextBlock Text="{Binding Path=Room}" />
+                                    <StackPanel>
+                                        <Button Content="View Teacher's Detail" Width="143" Margin="110,10,0,10" HorizontalAlignment="Left" Height="25"/>
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Email: " Margin="0,0,0,10" />
-                                        <TextBlock Text="{Binding Path=Email}" />
-                                    </StackPanel>
-                                    <TextBlock Text="Consultation hours:" />
-                                    <ListBox ItemsSource="{Binding Path=StaffConsultationList}" 
-                                             Margin="0,0,10,10" Height="57" VerticalAlignment="Bottom"/>
-                                    <TextBlock Text="Teaching This Semester:"/>
-                                    <ListBox  ItemsSource="{Binding UnitTeachingList}"
-                                              Height="131" Margin="0,0,10,0"/>
+                                    <Label Content="Unit's Timetable:" />
+                                    
                                 </StackPanel>
-                            </Grid>
-                            <Grid Grid.Column="1">
-                                <Image x:Name="UnitPhotoGrid" Source="{Binding Path=PhotoUrl}" VerticalAlignment="Top"/>
                             </Grid>
                         </Grid>
                         <Grid Grid.Row="1" x:Name="UnitTimeGrid">
-                            <Expander Header="Show/Hide Staff Activity Grid">
-                                <DataGrid 
-                                              IsReadOnly="True"
-                                              ItemsSource="{Binding Path=ActivityTable.DefaultView}" Margin="0,10">
-                                    <!--
-                                        <DataGrid.Columns>
-                                            <DataGridTextColumn Header="WeekDay" Binding="{Binding WeekDay}" />
-                                            <DataGridTextColumn Header="Start" Binding="{Binding Start}" />
-                                            <DataGridTextColumn Header="End" Binding="{Binding End}" />
-                                        </DataGrid.Columns>
-                                        -->
-                                </DataGrid>
-                            </Expander>
+                            <DataGrid x:Name="UnitTimeTable" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                          Width="438" Height="254" Margin="22,0,0,0">
+                                <DataGrid.Resources>
+                                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                                        <Setter Property="Background" Value="LightGray" />
+                                        <Setter Property="BorderThickness" Value="0,0,1,2" />
+                                        <Setter Property="BorderBrush" Value="Black" />
+                                    </Style>
+                                </DataGrid.Resources>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Time" 
+                                                            Binding="{Binding RowHeader }" Width="73"/>
+                                    <DataGridTextColumn Header="Monday"
+                                                            Binding="{Binding Mon_Activity }" Width="73"/>
+                                    <DataGridTextColumn Header="Tuesday"
+                                                            Binding="{Binding Tue_Activity}" Width="73"/>
+                                    <DataGridTextColumn Header="Wednesday" 
+                                                            Binding="{Binding Wed_Activity}" Width="73"/>
+                                    <DataGridTextColumn Header="Thursday" 
+                                                            Binding="{Binding Thu_Activity}" Width="73"/>
+                                    <DataGridTextColumn Header="Friday" 
+                                                            Binding="{Binding Fri_Activity}" Width="73"/>
+                                </DataGrid.Columns>
+
+                            </DataGrid>
+
                         </Grid>
                     </Grid>
                 </Grid>

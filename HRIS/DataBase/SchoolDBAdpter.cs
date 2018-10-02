@@ -334,5 +334,52 @@ namespace HRIS.Adapter
 
             return weeklyAvailabilityList;
         }
+
+        //==============================================================
+        //Start to do unit part
+        public static List<Unit> LoadAllUnit()
+        {
+            List<Unit> AllUnitList = new List<Unit>();
+
+            MySqlConnection conn = ConnAlacritas();
+            MySqlDataReader rdr = null;
+
+            try
+            {
+                conn.Open();
+                MySqlCommand sqlCmd = new MySqlCommand("select u.code, u.title, u.coordinator, concat(s.title, ' ', s.given_name, ' ', s.family_name) as coordinator_name from unit u join staff s on u.coordinator=s.id order by u.title", conn);
+                rdr = sqlCmd.ExecuteReader();
+
+                //pull all staff in DBtable to AllStaffList Object
+                while (rdr.Read())
+                {
+                    //Change the rer.GetString to get data by column name
+                    //AllStaffList.Add(new Staff { FamilyName = rdr.GetString(0), GivenName = rdr.GetString(1), StaffTitle = rdr.GetString(2) });
+                    AllUnitList.Add(new Unit
+                    {
+                        CoordinatorId = Int32.Parse(rdr["coordinator"].ToString()),
+                        UnitCode = rdr["code"].ToString(),
+                        UnitTitle = rdr["title"].ToString(),
+                        CoordinatorName = rdr["coordinator_name"].ToString()
+                    });
+                }
+            }
+            catch (MySqlException e)
+            {
+                throw;
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return AllUnitList;
+        }
     }
 }

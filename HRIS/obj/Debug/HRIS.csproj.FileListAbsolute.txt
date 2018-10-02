@@ -18,3 +18,5 @@ C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\View\MainWindow.g.cs
 C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\View\App.g.cs
 C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\View\App.baml
 C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\View\MainWindow.baml
+C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\View\SmallPartsUserControl.g.cs
+C:\Users\playi\Desktop\HRIS\HRIS\HRIS\obj\Debug\View\SmallPartsUserControl.baml

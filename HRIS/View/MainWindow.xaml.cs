@@ -24,15 +24,20 @@ namespace HRIS.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        //to declare a resource key and intiate an object for using
+        //to declare a STAFF resource key and intiate an object for using staff
         private const string STAFF_LIST_KEY = "staffListKey";
         private StaffController staffController;
+
+        //to declare a UNIT resource key and intiate an object for using unit
+        private const string UNIT_LIST_KEY = "unitListKey";
+        private UnitController unitController;
 
         public MainWindow()
         {
             InitializeComponent();
             // intiate an object for using
             staffController = (StaffController)(Application.Current.FindResource(STAFF_LIST_KEY) as ObjectDataProvider).ObjectInstance;
+            unitController = (UnitController)(Application.Current.FindResource(UNIT_LIST_KEY) as ObjectDataProvider).ObjectInstance;
         }
 
         private void StaffListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -75,6 +80,40 @@ namespace HRIS.View
         {
             //MessageBox.Show(StaffNameFilter.Text);
             staffController.NameFilter(StaffNameFilter.Text);
+        }
+
+        //===========================================================
+        //Start to code Unit Part
+        private void UnitListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0)
+            {
+                UnitDetailPanel.DataContext = e.AddedItems[0];
+                /*
+                PhotoGrid.DataContext = e.AddedItems[0];
+                //ActivityGrid.DataContext = e.AddedItems[0];
+                //MessageBox.Show(e.AddedItems[0].ToString());
+                //ActivityGrid.Columns.Clear();
+                ActivityGrid_Hobart.Items.Clear();
+                ActivityGrid_Hobart.Items.Refresh();
+                Staff staff = e.AddedItems[0] as Staff;
+                //SchoolDBAdpter.LoadWeeklyTeachingTime(staff.StaffId);
+                if (staff != null)
+                {
+                    //MessageBox.Show(staff.StaffId.ToString());
+                    for (int i = 0; i < 8; i++)
+                    {
+                        //WeeklyAvailability weeklyAvailability = staff.WeeklyAvailabilityList[i];
+                        ActivityGrid_Hobart.Items.Add(staff.WeeklyAvailabilityList[i]);
+                    }
+                }
+                */
+            }
+        }
+
+        private void UnitFilter_KeyUp(object sender, KeyEventArgs e)
+        {
+            unitController.UnitNameFilter(UnitFilter.Text);
         }
     }
 }
