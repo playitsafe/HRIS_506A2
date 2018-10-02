@@ -243,6 +243,51 @@ namespace HRIS.Adapter
                 }
             }
 
+            try
+            {
+                conn.Open();
+                MySqlCommand queryForConsultation = new MySqlCommand("select c.day, c.start, c.end from consultation c join staff s on c.staff_id = s.id where s.campus = 'Hobart' and c.staff_id=?id", conn);
+                queryForConsultation.Parameters.AddWithValue("id", id);
+                rdr = queryForConsultation.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    int start = Int32.Parse(rdr.GetString(1).ToString().Substring(0, 2));
+                    int end = Int32.Parse(rdr.GetString(2).ToString().Substring(0, 2));
+                    int consecutive = end - start;
+
+                    //to loop if class is several hours consecutive
+                    for (int i = 0; i < consecutive; i++)
+                    {
+                        foreach (var w in weeklyAvailabilityList)
+                        {
+                            //This code is for matching the start hour in query result with hour column of weeklyAvailabilityList
+                            if (w.StartTime == (start + i))
+                            {
+                                int indexOfWeekDay = (int)ParseEnum<DayOfWeek>(rdr.GetString(0));
+                                w.MonToFri_Activity[(indexOfWeekDay - 1)] = "Consultation";
+                            }
+                        }
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
             return weeklyAvailabilityList;
         }
     }
