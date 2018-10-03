@@ -86,6 +86,7 @@ namespace HRIS.View
         //Start to code Unit Part
         private void UnitListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            CampusComboBox.SelectedIndex = 0;
             if (e.AddedItems.Count > 0)
             {
                 string SelectedCampus = CampusComboBox.SelectedValue.ToString();
@@ -125,7 +126,8 @@ namespace HRIS.View
         {
             if (e.RemovedItems.Count > 0)
             {
-
+                //CampusComboBox.SelectedValue = 0;
+                
                 //MessageBox.Show(CampusComboBox.SelectedValue.ToString());
                 string selectCampus = CampusComboBox.SelectedValue.ToString();
                 string unitCode = CodeLable.Text;
