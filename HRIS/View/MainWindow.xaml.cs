@@ -88,28 +88,23 @@ namespace HRIS.View
         {
             //to reset campus to hobart when change unit
             CampusComboBox.SelectedIndex = 0;
+            UnitTimeTable.Items.Clear();
+            UnitTimeTable.Items.Refresh();
 
             if (e.AddedItems.Count > 0)
             {
+                UnitDetailPanel.DataContext = e.AddedItems[0];//data context = Object Unit!
+
                 //--To test if it can get value of select unit code and campus-Yes!
                 //MessageBox.Show(SelectedCampus);
                 //MessageBox.Show(e.AddedItems[0].ToString());
                 string SelectedCampus = CampusComboBox.SelectedValue.ToString();
-                
                 string unitCode = e.AddedItems[0].ToString();
 
-                //UnitDetailPanel.DataContext = e.AddedItems[0];//data context = Object Unit!
-
-                UnitTimeGrid.DataContext = UnitController.GetUnitWithSelectedCampus("Launceston", unitCode);
+                //UnitTimeGrid.DataContext = UnitController.GetUnitWithSelectedCampus(SelectedCampus, unitCode);
 
                 //UnitTimeGrid.DataContext = UnitController.GetUnitWithSelectedCampus(SelectedCampus, e.AddedItems[0].ToString())[0];
-
-
-                //UnitTimeGrid.DataContext = e.AddedItems[0];//Object of an unit.
-
-                UnitTimeTable.Items.Clear();
-                UnitTimeTable.Items.Refresh();
-                Unit unit = e.AddedItems[0] as Unit;
+                Unit unit = UnitController.GetUnitWithSelectedCampus(SelectedCampus, unitCode) as Unit;
 
                 if (unit != null)
                 {
@@ -118,6 +113,8 @@ namespace HRIS.View
                         UnitTimeTable.Items.Add(unit.WeeklyUnitClassList[i]);
                     }
                 }
+
+
             }
         }
 
@@ -127,89 +124,29 @@ namespace HRIS.View
         }
 
         //Campus_SelectionChanged
-        
+
         private void Campus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.RemovedItems.Count > 0)
             {
-                //CampusComboBox.SelectedValue = 0;
-                
-                //MessageBox.Show(CampusComboBox.SelectedValue.ToString());
-                string selectCampus = CampusComboBox.SelectedValue.ToString();
-                string unitCode = CodeLable.Text;
-
-                var unitList_Obj = UnitController.GetUnitWithSelectedCampus(selectCampus, unitCode);
-
-                //if filter result > 0
-                if (unitList_Obj.Count > 0)
-                {
-                    //MessageBox.Show(unitList_Obj[0].ToString());
-                    UnitTimeTable.Items.Clear();
-                    UnitTimeTable.Items.Refresh();
-                    UnitTimeGrid.DataContext = unitList_Obj[0];
-
-                    Unit unit = unitList_Obj[0];
-
-                    if (unit != null)
-                    {
-                        for (int i = 0; i < 8; i++)
-                        {
-                            UnitTimeTable.Items.Add(unit.WeeklyUnitClassList[i]);
-                        }
-                    }
-                }
-
-                
-                /*
-
-                //MessageBox.Show(CodeLable.Text);
-                UnitTimeGrid.DataContext = UnitController.GetUnitWithSelectedCampus(CodeLable.Text, e.AddedItems[0].ToString())[0];
-
                 UnitTimeTable.Items.Clear();
                 UnitTimeTable.Items.Refresh();
-                Unit unit = unitObj as Unit;
+                //MessageBox.Show(CampusComboBox.SelectedValue.ToString());
+                string SelectedCampus = CampusComboBox.SelectedValue.ToString();
+                string unitCode = CodeLable.Text;
+
+                Unit unit = UnitController.GetUnitWithSelectedCampus(SelectedCampus, unitCode) as Unit;
 
                 if (unit != null)
                 {
                     for (int i = 0; i < 8; i++)
                     {
-                        //WeeklyAvailability weeklyAvailability = staff.WeeklyAvailabilityList[i];
                         UnitTimeTable.Items.Add(unit.WeeklyUnitClassList[i]);
                     }
                 }
-                */
+
+
             }
-            /*
-           if (e.RemovedItems.Count > 0)
-           {
-               //MessageBox.Show(CampusComboBox.SelectedValue.ToString());
-               //UnitTimeTable.Items.Clear();
-               //UnitTimeTable.Items.Refresh();
-
-               if (CampusComboBox.SelectedValue.ToString() == "Launceston")
-               {
-                   UnitTimeTable.Items.Clear();
-                   UnitTimeTable.Items.Refresh();
-
-               }
-               else
-               {
-                   UnitTimeTable.Items.Clear();
-                   UnitTimeTable.Items.Refresh();
-                   Unit unit = e.AddedItems[0] as Unit;
-
-                   if (unit != null)
-                   {
-                       for (int i = 0; i < 8; i++)
-                       {
-                           //WeeklyAvailability weeklyAvailability = staff.WeeklyAvailabilityList[i];
-                           UnitTimeTable.Items.Add(unit.WeeklyUnitClassList[i]);
-                       }
-                   }
-               }
-
-           }
-           */
         }
     }
 }

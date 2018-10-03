@@ -21,16 +21,16 @@ namespace HRIS.Controller
         private List<Unit> allUnitList;
         public List<Unit> AllUnitList { get { return allUnitList; } }
 
-        private static List<Unit> allUnitListWithCampus;
-        public List<Unit> AllUnitListWithCampus { get { return allUnitListWithCampus; } }
+        //---private static List<Unit> allUnitListWithCampus;
+        //---public List<Unit> AllUnitListWithCampus { get { return allUnitListWithCampus; } }
 
         //to create a private property and a getter for UnitViewList
         private ObservableCollection<Unit> unitViewList;
         public ObservableCollection<Unit> UnitViewList { get { return unitViewList; } }
 
         //to create obervable collection for campus filter purpose only
-        private ObservableCollection<Unit> unitObserveListWithCampus;
-        public ObservableCollection<Unit> UnitObserveListWithCampus { get { return unitViewList; } }
+        //---private ObservableCollection<Unit> unitObserveListWithCampus;
+        //--public ObservableCollection<Unit> UnitObserveListWithCampus { get { return unitViewList; } }
 
         //to declare a current unit list under selected campus
         ///////public List<Unit> CampusFilteredUnitList;
@@ -39,19 +39,20 @@ namespace HRIS.Controller
         public UnitController()
         {
             allUnitList = SchoolDBAdpter.LoadAllUnit();
-            allUnitListWithCampus = SchoolDBAdpter.LoadAllUnitWithCampus();
+            //allUnitListWithCampus = SchoolDBAdpter.LoadAllUnitWithCampus();
 
            
             foreach (Unit u in allUnitList)
             {
                 //MainWindow win = new MainWindow();
                 //Campus campus = ParseEnum<Campus>(win.CampusComboBox.SelectedValue.ToString());
-                u.WeeklyUnitClassList = SchoolDBAdpter.LoadWeeklyUnitClassList("Hobart", u.UnitCode);
+                //-----------------------
+                //u.WeeklyUnitClassList = SchoolDBAdpter.LoadWeeklyUnitClassList("Hobart", u.UnitCode);
             }
 
             //to allow list for changing later
             unitViewList = new ObservableCollection<Unit>(allUnitList);
-            unitObserveListWithCampus = new ObservableCollection<Unit>(allUnitListWithCampus);
+            //unitObserveListWithCampus = new ObservableCollection<Unit>(allUnitListWithCampus);
 
             //to assign current unit list of the same as UnitViewList
             //CampusFilteredUnitList = UnitViewList.ToList();
@@ -77,17 +78,23 @@ namespace HRIS.Controller
             filteredList.ToList().ForEach(unitViewList.Add);
         }
 
-        public static List<Unit> GetUnitWithSelectedCampus(string campus, string unitCode)
+        public static Unit GetUnitWithSelectedCampus(string campus, string unitCode)
         {
-            var filteredList = from Unit u in allUnitListWithCampus
-                               where u.Campus.ToString() == campus && u.UnitCode == unitCode
-                               select u;
+            Unit unit =new Unit();
+
+            unit.WeeklyUnitClassList = SchoolDBAdpter.LoadWeeklyUnitClassList(campus, unitCode);
+
+
+
+            //var filteredList = from Unit u in unitClassSchedule
+            //                   where u.Campus.ToString() == campus && u.UnitCode == unitCode
+            //                   select u;
             //to sort the order by family name, then given name
             //filteredList.OrderBy(s => s.FamilyName).ThenBy(s => s.GivenName);
            // staffViewList.Clear();
             //filteredList.ToList().ForEach(staffViewList.Add);
 
-            return filteredList.ToList();
+            return unit;
         }
     }
 }

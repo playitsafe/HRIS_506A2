@@ -220,7 +220,7 @@ namespace HRIS.Adapter
                             if (w.StartTime == (start + i))
                             {
                                 int indexOfWeekDay = (int)ParseEnum<DayOfWeek>(rdr.GetString(0));
-                                w.MonToFri_Activity[(indexOfWeekDay - 1)] = "Teaching(H)";
+                                w.MonToFri_Activity[(indexOfWeekDay - 1)] = "Teaching\n(Hobart)";
                             }
                         }
                     }
@@ -265,7 +265,7 @@ namespace HRIS.Adapter
                             if (w.StartTime == (start + i))
                             {
                                 int indexOfWeekDay = (int)ParseEnum<DayOfWeek>(rdr.GetString(0));
-                                w.MonToFri_Activity[(indexOfWeekDay - 1)] = "Teaching(L)";
+                                w.MonToFri_Activity[(indexOfWeekDay - 1)] = "Teaching\n(Launceston)";
                             }
                         }
                     }
@@ -383,6 +383,7 @@ namespace HRIS.Adapter
         }
 
         //use right join query to load a complete unit list with both campus
+        
         public static List<Unit> LoadAllUnitWithCampus()
         {
             List<Unit> AllUnitWithCampusList = new List<Unit>();
@@ -429,7 +430,7 @@ namespace HRIS.Adapter
             }
             return AllUnitWithCampusList;
         }
-
+        
 
         //query time table from DB for every unit
         public static List<UnitClass> LoadWeeklyUnitClassList(string campus, string unit_code)
@@ -444,23 +445,26 @@ namespace HRIS.Adapter
 
             MySqlConnection conn = ConnAlacritas();
             MySqlDataReader rdr = null;
-
+            
             try
             {
                 conn.Open();
+
+                MySqlCommand queryForClass = new MySqlCommand("select c.unit_code, c.campus, c.day, c.start, c.end, c.type, c.room, concat(s.given_name, ' ', s.family_name) as teacher from class c join staff s on c.staff=s.id where c.campus=?campus and c.unit_code=?unit_code", conn);
                 
-                MySqlCommand queryForClass = new MySqlCommand("select c.day, c.start, c.end, c.type, c.room, c.campus, concat(s.given_name, ' ', s.family_name) as teacher from class c join staff s on c.staff=s.id", conn);
-                
+                queryForClass.Parameters.AddWithValue("campus", campus);
+                queryForClass.Parameters.AddWithValue("unit_code", unit_code);
                 rdr = queryForClass.ExecuteReader();
 
                 while (rdr.Read())
                 {
-                    ClassType classType = ParseEnum<ClassType>(rdr.GetString(3));
-                    String room = rdr.GetString(4);
-                    string teacher = rdr.GetString(5);
-
-                    int start = Int32.Parse(rdr.GetString(1).ToString().Substring(0, 2));
-                    int end = Int32.Parse(rdr.GetString(2).ToString().Substring(0, 2));
+                    string unitCode = rdr.GetString(0);
+                    string camp = rdr.GetString(1);
+                    string classType = rdr.GetString(5);
+                    string room = rdr.GetString(6);
+                    string teacher = rdr.GetString(7);
+                    int start = Int32.Parse(rdr.GetString(3).ToString().Substring(0, 2));
+                    int end = Int32.Parse(rdr.GetString(4).ToString().Substring(0, 2));
                     int consecutive = end - start;
 
                     //to loop if unitClass is several hours consecutive
@@ -471,8 +475,8 @@ namespace HRIS.Adapter
                             //This code is for matching the start hour in query result with hour column of weeklyUnitClassList
                             if (w.Start == (start + i))
                             {
-                                int indexOfWeekDay = (int)ParseEnum<DayOfWeek>(rdr.GetString(0));
-                                w.MonToFri_Activity[(indexOfWeekDay - 1)] = $"{classType}\n{room}\n{teacher}";
+                                int indexOfWeekDay = (int)ParseEnum<DayOfWeek>(rdr.GetString(2));
+                                w.MonToFri_Activity[(indexOfWeekDay - 1)] = $"{classType}\n{room}\n{teacher}\n{camp}";
                             }
                         }
                     }
@@ -497,5 +501,7 @@ namespace HRIS.Adapter
 
             return weeklyUnitClassList;
         }
+
+
     }
 }
