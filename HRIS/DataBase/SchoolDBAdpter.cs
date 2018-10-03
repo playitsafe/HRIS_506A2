@@ -449,9 +449,8 @@ namespace HRIS.Adapter
             {
                 conn.Open();
                 
-                MySqlCommand queryForClass = new MySqlCommand("select c.day, c.start, c.end, c.type, c.room, concat(s.given_name, ' ', s.family_name) as teacher from class c join staff s on c.staff=s.id where c.campus=?campus and c.unit_code=?unit_code", conn);
-                queryForClass.Parameters.AddWithValue("campus", campus);
-                queryForClass.Parameters.AddWithValue("unit_code", unit_code);
+                MySqlCommand queryForClass = new MySqlCommand("select c.day, c.start, c.end, c.type, c.room, c.campus, concat(s.given_name, ' ', s.family_name) as teacher from class c join staff s on c.staff=s.id", conn);
+                
                 rdr = queryForClass.ExecuteReader();
 
                 while (rdr.Read())
@@ -474,7 +473,6 @@ namespace HRIS.Adapter
                             {
                                 int indexOfWeekDay = (int)ParseEnum<DayOfWeek>(rdr.GetString(0));
                                 w.MonToFri_Activity[(indexOfWeekDay - 1)] = $"{classType}\n{room}\n{teacher}";
-                                //w.MonToFri_Activity[(indexOfWeekDay - 1)] = "works!";
                             }
                         }
                     }

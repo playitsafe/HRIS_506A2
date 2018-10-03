@@ -86,14 +86,21 @@ namespace HRIS.View
         //Start to code Unit Part
         private void UnitListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //to reset campus to hobart when change unit
             CampusComboBox.SelectedIndex = 0;
+
             if (e.AddedItems.Count > 0)
             {
-                string SelectedCampus = CampusComboBox.SelectedValue.ToString();
-                 //MessageBox.Show(aa);
-
-                UnitDetailPanel.DataContext = e.AddedItems[0];
+                //--To test if it can get value of select unit code and campus-Yes!
+                //MessageBox.Show(SelectedCampus);
                 //MessageBox.Show(e.AddedItems[0].ToString());
+                string SelectedCampus = CampusComboBox.SelectedValue.ToString();
+                
+                string unitCode = e.AddedItems[0].ToString();
+
+                //UnitDetailPanel.DataContext = e.AddedItems[0];//data context = Object Unit!
+
+                UnitTimeGrid.DataContext = UnitController.GetUnitWithSelectedCampus("Launceston", unitCode);
 
                 //UnitTimeGrid.DataContext = UnitController.GetUnitWithSelectedCampus(SelectedCampus, e.AddedItems[0].ToString())[0];
 
@@ -108,7 +115,6 @@ namespace HRIS.View
                 {
                     for (int i = 0; i < 8; i++)
                     {
-                        //WeeklyAvailability weeklyAvailability = staff.WeeklyAvailabilityList[i];
                         UnitTimeTable.Items.Add(unit.WeeklyUnitClassList[i]);
                     }
                 }
@@ -137,8 +143,20 @@ namespace HRIS.View
                 //if filter result > 0
                 if (unitList_Obj.Count > 0)
                 {
-                    MessageBox.Show(unitList_Obj[0].ToString());
-                    //MessageBox.Show(CampusComboBox.SelectedValue.ToString());
+                    //MessageBox.Show(unitList_Obj[0].ToString());
+                    UnitTimeTable.Items.Clear();
+                    UnitTimeTable.Items.Refresh();
+                    UnitTimeGrid.DataContext = unitList_Obj[0];
+
+                    Unit unit = unitList_Obj[0];
+
+                    if (unit != null)
+                    {
+                        for (int i = 0; i < 8; i++)
+                        {
+                            UnitTimeTable.Items.Add(unit.WeeklyUnitClassList[i]);
+                        }
+                    }
                 }
 
                 

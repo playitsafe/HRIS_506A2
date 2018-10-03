@@ -175,7 +175,7 @@
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*" />
-                            <RowDefinition Height="3*" />
+                            <RowDefinition Height="2*" />
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0"  x:Name="UnitDetailPanel">
                             <Grid>
@@ -188,19 +188,19 @@
                                     <StackPanel Orientation="Horizontal">
                                         <Label Content="Select Campus: " />
                                         <ComboBox x:Name="CampusComboBox" Width="150" ItemsSource="{Binding Source={StaticResource x_Campus}}" SelectedIndex="0" Grid.Column="1" Grid.Row="1" Height="25" Margin="0,0,10,2" VerticalAlignment="Bottom" SelectionChanged="Campus_SelectionChanged">
-                                            
+
                                         </ComboBox>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <Label Content="Unit Coordinator: " />
                                         <Label Content="{Binding Path=CoordinatorName}" />
-                                        
+
                                     </StackPanel>
                                     <StackPanel>
                                         <Button Content="View Teacher's Detail" Width="143" Margin="110,10,0,10" HorizontalAlignment="Left" Height="25"/>
                                     </StackPanel>
                                     <Label Content="Unit's Timetable:" />
-                                    
+
                                 </StackPanel>
                             </Grid>
                         </Grid>
