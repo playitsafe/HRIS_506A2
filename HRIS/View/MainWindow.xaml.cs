@@ -102,7 +102,6 @@ namespace HRIS.View
 
                 if (unit != null)
                 {
-                    //MessageBox.Show(staff.StaffId.ToString());
                     for (int i = 0; i < 8; i++)
                     {
                         //WeeklyAvailability weeklyAvailability = staff.WeeklyAvailabilityList[i];

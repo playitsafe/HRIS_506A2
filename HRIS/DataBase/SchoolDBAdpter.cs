@@ -383,7 +383,7 @@ namespace HRIS.Adapter
         }
 
         //query time table from DB for every unit
-        public static List<UnitClass> LoadWeeklyUnitClassList(Campus campus, string unit_code)
+        public static List<UnitClass> LoadWeeklyUnitClassList(string campus, string unit_code)
         {
             //Firstly create list of 8 hours of each day with all free activity as default.
             List<UnitClass> weeklyUnitClassList = new List<UnitClass>();
@@ -424,7 +424,8 @@ namespace HRIS.Adapter
                             if (w.Start == (start + i))
                             {
                                 int indexOfWeekDay = (int)ParseEnum<DayOfWeek>(rdr.GetString(0));
-                                w.MonToFri_Activity[(indexOfWeekDay - 1)] = $"{classType}"; //$"{classType}\n{room}\n{teacher}";
+                                w.MonToFri_Activity[(indexOfWeekDay - 1)] = $"{classType}\n{room}\n{teacher}";
+                                //w.MonToFri_Activity[(indexOfWeekDay - 1)] = "works!";
                             }
                         }
                     }

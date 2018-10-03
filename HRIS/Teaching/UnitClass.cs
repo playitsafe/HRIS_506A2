@@ -29,7 +29,7 @@ namespace HRIS.Teaching
             return $"{UnitCode} {UnitName}";
         }
 
-        public string[] MonToFri_Activity = { " ", " ", " ", " ", " " };
+        public string[] MonToFri_Activity = { "", "", "", "", "" };
 
         public string Mon_Activity { get { return MonToFri_Activity[0]; } }
         public string Tue_Activity { get { return MonToFri_Activity[1]; } }
