@@ -15,8 +15,17 @@ namespace HRIS.Teaching
         public string UnitTitle { get; set; }
         public int CoordinatorId { get; set; }
         public string CoordinatorName { get; set; }
+        public int ClassTeacherId { get; set; }
+        public string ClassTeacherName { get; set; }
         public Campus Campus { get; set; }
 
+
+        //to create a list of schedule each hour 
         public List<UnitClass> WeeklyUnitClassList { get; set; }
+
+        public override string ToString()
+        {
+            return $"{UnitCode}";
+        }
     }
 }

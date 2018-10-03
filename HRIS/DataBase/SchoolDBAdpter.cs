@@ -382,6 +382,55 @@ namespace HRIS.Adapter
             return AllUnitList;
         }
 
+        //use right join query to load a complete unit list with both campus
+        public static List<Unit> LoadAllUnitWithCampus()
+        {
+            List<Unit> AllUnitWithCampusList = new List<Unit>();
+
+            MySqlConnection conn = ConnAlacritas();
+            MySqlDataReader rdr = null;
+
+            try
+            {
+                conn.Open();
+                MySqlCommand sqlCmd = new MySqlCommand("select u.code, u.title, u.coordinator, c.staff, c.campus from unit u right join class c on u.code=c.unit_code order by u.title", conn);
+                rdr = sqlCmd.ExecuteReader();
+
+                //pull all staff in DBtable to AllStaffList Object
+                while (rdr.Read())
+                {
+                    //Change the rer.GetString to get data by column name
+                    //AllStaffList.Add(new Staff { FamilyName = rdr.GetString(0), GivenName = rdr.GetString(1), StaffTitle = rdr.GetString(2) });
+                    AllUnitWithCampusList.Add(new Unit
+                    {
+                        UnitCode = rdr.GetString(0),
+                        UnitTitle = rdr.GetString(1),
+                        CoordinatorId = Int32.Parse(rdr.GetString(2)),
+                        ClassTeacherId = Int32.Parse(rdr.GetString(3)),
+                        Campus = ParseEnum<Campus>(rdr.GetString(4)),
+                        //CoordinatorName = rdr["coordinator_name"].ToString()
+                    });
+                }
+            }
+            catch (MySqlException e)
+            {
+                throw;
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return AllUnitWithCampusList;
+        }
+
+
         //query time table from DB for every unit
         public static List<UnitClass> LoadWeeklyUnitClassList(string campus, string unit_code)
         {

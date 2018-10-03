@@ -88,13 +88,19 @@ namespace HRIS.View
         {
             if (e.AddedItems.Count > 0)
             {
+                string SelectedCampus = CampusComboBox.SelectedValue.ToString();
+                 //MessageBox.Show(aa);
+
                 UnitDetailPanel.DataContext = e.AddedItems[0];
-                /*
-                PhotoGrid.DataContext = e.AddedItems[0];
-                //ActivityGrid.DataContext = e.AddedItems[0];
                 //MessageBox.Show(e.AddedItems[0].ToString());
-                //ActivityGrid.Columns.Clear();
-                */
+
+                UnitTimeGrid.DataContext = UnitController.GetUnitWithSelectedCampus(SelectedCampus, e.AddedItems[0].ToString());
+
+
+                //UnitTimeGrid.DataContext = e.AddedItems[0];//Object of an unit.
+
+
+
 
                 UnitTimeTable.Items.Clear();
                 UnitTimeTable.Items.Refresh();
@@ -117,26 +123,43 @@ namespace HRIS.View
         }
 
         //Campus_SelectionChanged
+        
         private void Campus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (e.RemovedItems.Count > 0)
-            {
-                //MessageBox.Show(CampusComboBox.SelectedValue.ToString());
-                UnitTimeTable.Items.Clear();
-                UnitTimeTable.Items.Refresh();
-                Unit unit = e.AddedItems[0] as Unit;
+            
+            string ss = CodeLable.Content.ToString();
+            MessageBox.Show(ss);
+            /*
+           if (e.RemovedItems.Count > 0)
+           {
+               //MessageBox.Show(CampusComboBox.SelectedValue.ToString());
+               //UnitTimeTable.Items.Clear();
+               //UnitTimeTable.Items.Refresh();
 
-                if (unit != null)
-                {
-                    //MessageBox.Show(staff.StaffId.ToString());
-                    for (int i = 0; i < 8; i++)
-                    {
-                        //WeeklyAvailability weeklyAvailability = staff.WeeklyAvailabilityList[i];
-                        UnitTimeTable.Items.Add(unit.WeeklyUnitClassList[i]);
-                    }
-                }
-            }
+               if (CampusComboBox.SelectedValue.ToString() == "Launceston")
+               {
+                   UnitTimeTable.Items.Clear();
+                   UnitTimeTable.Items.Refresh();
 
+               }
+               else
+               {
+                   UnitTimeTable.Items.Clear();
+                   UnitTimeTable.Items.Refresh();
+                   Unit unit = e.AddedItems[0] as Unit;
+
+                   if (unit != null)
+                   {
+                       for (int i = 0; i < 8; i++)
+                       {
+                           //WeeklyAvailability weeklyAvailability = staff.WeeklyAvailabilityList[i];
+                           UnitTimeTable.Items.Add(unit.WeeklyUnitClassList[i]);
+                       }
+                   }
+               }
+
+           }
+           */
         }
     }
 }

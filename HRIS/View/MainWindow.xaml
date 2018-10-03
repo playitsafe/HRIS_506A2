@@ -172,22 +172,22 @@
                         </StackPanel>
                     </Grid>
                     <!--Fill in the selected detail panel-->
-                    <Grid Grid.Column="1" x:Name="UnitDetailPanel">
+                    <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*" />
                             <RowDefinition Height="3*" />
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
+                        <Grid Grid.Row="0"  x:Name="UnitDetailPanel">
                             <Grid>
                                 <StackPanel Orientation="Vertical" Margin="20,15,0,3">
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                        <Label Content="{Binding Path=UnitCode}" />
+                                        <Label x:Name="CodeLable" Content="{Binding Path=UnitCode}" />
                                         <Label Content=" " />
                                         <Label Content="{Binding Path=UnitTitle}" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <Label Content="Select Campus: " />
-                                        <ComboBox x:Name="CampusComboBox" Width="150" ItemsSource="{Binding Source={StaticResource x_Campus}}" SelectedIndex="0" Grid.Column="1" Grid.Row="1" Height="25" Margin="0,0,10,2" VerticalAlignment="Bottom" SelectionChanged="Campus_SelectionChanged" >
+                                        <ComboBox x:Name="CampusComboBox" Width="150" ItemsSource="{Binding Source={StaticResource x_Campus}}" SelectedIndex="1" Grid.Column="1" Grid.Row="1" Height="25" Margin="0,0,10,2" VerticalAlignment="Bottom" SelectionChanged="Campus_SelectionChanged">
                                             
                                         </ComboBox>
                                     </StackPanel>
