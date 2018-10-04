@@ -153,7 +153,8 @@ namespace HRIS.View
 
             //MessageBox.Show(NameTag.ToolTip.ToString());
             Tab.SelectedIndex = 0;
-
+            StaffUnitBox.SelectedIndex = -1;
+            StaffListShowBox.SelectedIndex = -1;
             Staff SelectedStaff = staffController.GetClickedStaff(TeacherButton.ToolTip.ToString())[0];
             StaffDetailPanel.DataContext = SelectedStaff;
             PhotoGrid.DataContext = SelectedStaff;
@@ -174,6 +175,7 @@ namespace HRIS.View
             if (e.AddedItems.Count > 0)
             {
                 //some housekeep work for unit detail panel
+                UnitListShowBox.SelectedIndex = -1;
                 Tab.SelectedIndex = 1;
                 CampusComboBox.SelectedIndex = 0;
                 UnitTimeTable.Items.Clear();

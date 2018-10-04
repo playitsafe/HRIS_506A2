@@ -7,8 +7,8 @@
         xmlns:entity="clr-namespace:HRIS.Teaching"
         xmlns:controller="clr-namespace:HRIS.Controller"
         mc:Ignorable="d"
-        Title="HRIS - KIT506 Assignment2 - By Group k506h_a2_m1300_9" Height="740" Width="930">
-    
+        Title="HRIS - KIT506 Assignment2 - By Group k506h_a2_m1300_9" Height="740" Width="970">
+
     <Grid>
         <TabControl x:Name="Tab" Margin="2" HorizontalAlignment="Stretch">
             <TabItem  Header="Staff List" HorizontalAlignment="Stretch" Width="94" Height="30">
@@ -107,7 +107,7 @@
                                     <ListBox ItemsSource="{Binding Path=StaffConsultationList}" 
                                              Margin="0,0,10,10" Height="57" VerticalAlignment="Bottom"/>
                                     <TextBlock Text="Teaching This Semester:"/>
-                                    
+
                                     <ListBox x:Name="StaffUnitBox"  ItemsSource="{Binding UnitTeachingList}" Margin="0,0,10,0" Height="104" SelectionChanged="StaffUnitBox_SelectionChanged"/>
                                 </StackPanel>
                             </Grid>
@@ -127,18 +127,18 @@
                                     </DataGrid.Resources>
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Time" 
-                                                            Binding="{Binding RowHeader }" Width="98" />
+                                                            Binding="{Binding RowHeader }" Width="106" />
                                         <DataGridTextColumn Header="Monday"
-                                                            Binding="{Binding Mon_Activity }" Width="98"/>
+                                                            Binding="{Binding Mon_Activity }" Width="106"/>
                                         <DataGridTextColumn Header="Tuesday"
-                                                            Binding="{Binding Tue_Activity}" Width="98"/>
+                                                            Binding="{Binding Tue_Activity}" Width="106"/>
                                         <DataGridTextColumn Header="Wednesday" 
-                                                            Binding="{Binding Wed_Activity}" Width="98"/>
+                                                            Binding="{Binding Wed_Activity}" Width="106"/>
                                         <DataGridTextColumn Header="Thursday" 
-                                                            Binding="{Binding Thu_Activity}" Width="98"/>
+                                                            Binding="{Binding Thu_Activity}" Width="106"/>
                                         <DataGridTextColumn Header="Friday" 
-                                                            Binding="{Binding Fri_Activity}" Width="98"/>
-                                                
+                                                            Binding="{Binding Fri_Activity}" Width="106"/>
+
                                     </DataGrid.Columns>
 
                                 </DataGrid>
@@ -180,13 +180,13 @@
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0"  x:Name="UnitDetailPanel">
                             <Grid>
-                                <StackPanel Orientation="Vertical" Margin="20,15,0,3">
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <StackPanel Orientation="Vertical" Margin="20,15,0,3" HorizontalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,10">
                                         <TextBlock x:Name="CodeLable" Text="{Binding Path=UnitCode}" VerticalAlignment="Center" />
                                         <Label Content=" " />
                                         <Label Content="{Binding Path=UnitTitle}" />
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                                         <Label Content="Select Campus: " />
                                         <ComboBox x:Name="CampusComboBox" Width="150" ItemsSource="{Binding Source={StaticResource x_Campus}}" SelectedIndex="0" Grid.Column="1" Grid.Row="1" Height="25" Margin="0,0,10,2" VerticalAlignment="Bottom" SelectionChanged="Campus_SelectionChanged">
 
@@ -194,43 +194,47 @@
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <Label Content="Unit Coordinator: " />
-                                        <TextBlock x:Name="StaffLable" Text="{Binding Path=CoordinatorName}" />
+                                        <TextBlock x:Name="StaffLable" Text="{Binding Path=CoordinatorName}" VerticalAlignment="Center" />
 
                                     </StackPanel>
                                     <StackPanel>
-                                        <Button x:Name="TeacherButton" Content="View Teacher's Detail" Width="143" Margin="110,10,0,10" HorizontalAlignment="Left" Height="25" Click="TeacherButton_Click" ToolTip="{Binding Path=CoordinatorId}"/>
+                                        <Button x:Name="TeacherButton" Content="View Teacher's Detail" Width="243" Margin="10,10,0,10" HorizontalAlignment="Left" Height="25" Click="TeacherButton_Click" ToolTip="{Binding Path=CoordinatorId}"/>
                                     </StackPanel>
-                                    <Label Content="Unit's Timetable:" />
+
 
                                 </StackPanel>
+
                             </Grid>
                         </Grid>
                         <Grid Grid.Row="1" x:Name="UnitTimeGrid">
-                            <DataGrid x:Name="UnitTimeTable" Margin="3,0" HorizontalAlignment="Center">
-                                <DataGrid.Resources>
-                                    <Style TargetType="{x:Type DataGridColumnHeader}">
-                                        <Setter Property="Background" Value="LightGray" />
-                                        <Setter Property="BorderThickness" Value="0,0,1,2" />
-                                        <Setter Property="BorderBrush" Value="Black" />
-                                        
-                                    </Style>
-                                </DataGrid.Resources>
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Time" 
-                                                            Binding="{Binding RowHeader }" Width="82"/>
-                                    <DataGridTextColumn Header="Monday"
-                                                            Binding="{Binding Mon_Activity }" Width="93"/>
-                                    <DataGridTextColumn Header="Tuesday"
-                                                            Binding="{Binding Tue_Activity}" Width="93"/>
-                                    <DataGridTextColumn Header="Wednesday" 
-                                                            Binding="{Binding Wed_Activity}" Width="93"/>
-                                    <DataGridTextColumn Header="Thursday" 
-                                                            Binding="{Binding Thu_Activity}" Width="93"/>
-                                    <DataGridTextColumn Header="Friday" 
-                                                            Binding="{Binding Fri_Activity}" Width="93"/>
-                                </DataGrid.Columns>
+                            <StackPanel>
+                                <Label Content="Unit's Timetable:" HorizontalAlignment="Center"/>
+                                <DataGrid x:Name="UnitTimeTable" Margin="3,0" HorizontalAlignment="Center">
+                                    <DataGrid.Resources>
+                                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                                            <Setter Property="Background" Value="LightGray" />
+                                            <Setter Property="BorderThickness" Value="0,0,1,2" />
+                                            <Setter Property="BorderBrush" Value="Black" />
 
-                            </DataGrid>
+                                        </Style>
+                                    </DataGrid.Resources>
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Time" 
+                                                            Binding="{Binding RowHeader }" Width="82"/>
+                                        <DataGridTextColumn Header="Monday"
+                                                            Binding="{Binding Mon_Activity }" Width="93"/>
+                                        <DataGridTextColumn Header="Tuesday"
+                                                            Binding="{Binding Tue_Activity}" Width="93"/>
+                                        <DataGridTextColumn Header="Wednesday" 
+                                                            Binding="{Binding Wed_Activity}" Width="93"/>
+                                        <DataGridTextColumn Header="Thursday" 
+                                                            Binding="{Binding Thu_Activity}" Width="93"/>
+                                        <DataGridTextColumn Header="Friday" 
+                                                            Binding="{Binding Fri_Activity}" Width="93"/>
+                                    </DataGrid.Columns>
+
+                                </DataGrid>
+                            </StackPanel>
 
                         </Grid>
                     </Grid>
