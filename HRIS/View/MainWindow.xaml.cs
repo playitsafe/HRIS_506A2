@@ -115,8 +115,6 @@ namespace HRIS.View
                         UnitTimeTable.Items.Add(unit.WeeklyUnitClassList[i]);
                     }
                 }
-
-
             }
         }
 
@@ -146,12 +144,10 @@ namespace HRIS.View
                         UnitTimeTable.Items.Add(unit.WeeklyUnitClassList[i]);
                     }
                 }
-
             }
         }
 
         //an event to navigate back to staff panel
-        
         private void TeacherButton_Click(object sender, EventArgs e)
         {
 
@@ -174,27 +170,21 @@ namespace HRIS.View
         
         private void StaffUnitBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Tab.SelectedIndex = 1;
-            //MessageBox.Show(e.AddedItems[0].ToString());
-            string unit_code = e.AddedItems[0].ToString().Substring(0,6);
-
-            Unit SelectedUnit = unitController.GetClickedUnit(unit_code)[0];
-
-            //some housekeep work for unit detail panel
-            CampusComboBox.SelectedIndex = 0;
-            UnitTimeTable.Items.Clear();
-            UnitTimeTable.Items.Refresh();
 
             if (e.AddedItems.Count > 0)
             {
+                //some housekeep work for unit detail panel
+                Tab.SelectedIndex = 1;
+                CampusComboBox.SelectedIndex = 0;
+                UnitTimeTable.Items.Clear();
+                UnitTimeTable.Items.Refresh();
+
+                string unit_code = e.AddedItems[0].ToString().Substring(0, 6);
+                Unit SelectedUnit = unitController.GetClickedUnit(unit_code)[0];
                 UnitDetailPanel.DataContext = SelectedUnit;
 
                 string SelectedCampus = CampusComboBox.SelectedValue.ToString();
-                //string unitCode = e.AddedItems[0].ToString();
-
-                //UnitTimeGrid.DataContext = UnitController.GetUnitWithSelectedCampus(SelectedCampus, unitCode);
-
-                //UnitTimeGrid.DataContext = UnitController.GetUnitWithSelectedCampus(SelectedCampus, e.AddedItems[0].ToString())[0];
+                
                 Unit unit = UnitController.GetUnitWithSelectedCampus(SelectedCampus, unit_code) as Unit;
 
                 if (unit != null)
