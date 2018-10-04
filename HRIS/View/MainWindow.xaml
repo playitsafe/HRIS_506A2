@@ -76,8 +76,6 @@
                                 <ColumnDefinition Width="1*" />
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
-
-                                <!--Fill in the selected detail panel-->
                                 <StackPanel x:Name="StaffDetailPanel" Orientation="Vertical" Margin="20,15,0,5">
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                         <TextBlock x:Name="NameTag" Text="Name:  " ToolTip="{Binding Path=StaffId}"/>
@@ -104,8 +102,7 @@
                                         <TextBlock Text="{Binding Path=Email}" />
                                     </StackPanel>
                                     <TextBlock Text="Consultation hours:" />
-                                    <ListBox ItemsSource="{Binding Path=StaffConsultationList}" 
-                                             Margin="0,0,10,10" Height="57" VerticalAlignment="Bottom"/>
+                                    <local:SmallPartsUserControl />
                                     <TextBlock Text="Teaching This Semester:"/>
 
                                     <ListBox x:Name="StaffUnitBox"  ItemsSource="{Binding UnitTeachingList}" Margin="0,0,10,0" Height="104" SelectionChanged="StaffUnitBox_SelectionChanged"/>
