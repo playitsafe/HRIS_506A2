@@ -171,7 +171,7 @@ namespace HRIS.View
             }
 
         }
-
+        
         private void StaffUnitBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Tab.SelectedIndex = 1;
@@ -204,9 +204,10 @@ namespace HRIS.View
                         UnitTimeTable.Items.Add(unit.WeeklyUnitClassList[i]);
                     }
                 }
-
-
             }
         }
+        
+
+        
     }
 }
