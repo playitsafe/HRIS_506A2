@@ -30,7 +30,7 @@ namespace HRIS.View
 
         //to declare a UNIT resource key and intiate an object for using unit
         private const string UNIT_LIST_KEY = "unitListKey";
-        private UnitController unitController;
+        public UnitController unitController;
 
         public MainWindow()
         {
@@ -171,6 +171,42 @@ namespace HRIS.View
             }
 
         }
-        
+
+        private void StaffUnitBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Tab.SelectedIndex = 1;
+            //MessageBox.Show(e.AddedItems[0].ToString());
+            string unit_code = e.AddedItems[0].ToString().Substring(0,6);
+
+            Unit SelectedUnit = unitController.GetClickedUnit(unit_code)[0];
+
+            //some housekeep work for unit detail panel
+            CampusComboBox.SelectedIndex = 0;
+            UnitTimeTable.Items.Clear();
+            UnitTimeTable.Items.Refresh();
+
+            if (e.AddedItems.Count > 0)
+            {
+                UnitDetailPanel.DataContext = SelectedUnit;
+
+                string SelectedCampus = CampusComboBox.SelectedValue.ToString();
+                //string unitCode = e.AddedItems[0].ToString();
+
+                //UnitTimeGrid.DataContext = UnitController.GetUnitWithSelectedCampus(SelectedCampus, unitCode);
+
+                //UnitTimeGrid.DataContext = UnitController.GetUnitWithSelectedCampus(SelectedCampus, e.AddedItems[0].ToString())[0];
+                Unit unit = UnitController.GetUnitWithSelectedCampus(SelectedCampus, unit_code) as Unit;
+
+                if (unit != null)
+                {
+                    for (int i = 0; i < 8; i++)
+                    {
+                        UnitTimeTable.Items.Add(unit.WeeklyUnitClassList[i]);
+                    }
+                }
+
+
+            }
+        }
     }
 }

@@ -107,7 +107,7 @@
                                     <ListBox ItemsSource="{Binding Path=StaffConsultationList}" 
                                              Margin="0,0,10,10" Height="57" VerticalAlignment="Bottom"/>
                                     <TextBlock Text="Teaching This Semester:"/>
-                                    <ListBox x:Name="StaffUnitBox"  ItemsSource="{Binding UnitTeachingList}" Margin="0,0,10,0" Height="104"/>
+                                    <ListBox x:Name="StaffUnitBox"  ItemsSource="{Binding UnitTeachingList}" Margin="0,0,10,0" Height="104" SelectionChanged="StaffUnitBox_SelectionChanged"/>
                                 </StackPanel>
                             </Grid>
                             <Grid Grid.Column="1">

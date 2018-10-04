@@ -105,5 +105,14 @@ namespace HRIS.Controller
             return staff;
         }
         */
+
+        public List<Unit> GetClickedUnit(string unit_code)
+        {
+            var filteredList = from Unit u in allUnitList
+                               where u.UnitCode == unit_code
+                               select u;
+
+            return filteredList.ToList();
+        }
     }
 }
