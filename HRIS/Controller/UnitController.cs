@@ -41,14 +41,14 @@ namespace HRIS.Controller
             allUnitList = SchoolDBAdpter.LoadAllUnit();
             //allUnitListWithCampus = SchoolDBAdpter.LoadAllUnitWithCampus();
 
-           
+            /*
             foreach (Unit u in allUnitList)
             {
                 
                 //-----------------------
                 //u.WeeklyUnitClassList = SchoolDBAdpter.LoadWeeklyUnitClassList("Hobart", u.UnitCode);
             }
-
+            */
             //to allow list for changing later
             unitViewList = new ObservableCollection<Unit>(allUnitList);
             //unitObserveListWithCampus = new ObservableCollection<Unit>(allUnitListWithCampus);
@@ -95,5 +95,15 @@ namespace HRIS.Controller
 
             return unit;
         }
+
+        /*=====use += eventHandler instead ===========
+        public static Staff GetUnitTeacher()
+        {
+            Staff staff = new Staff();
+
+
+            return staff;
+        }
+        */
     }
 }

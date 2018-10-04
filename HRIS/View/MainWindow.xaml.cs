@@ -26,7 +26,7 @@ namespace HRIS.View
     {
         //to declare a STAFF resource key and intiate an object for using staff
         private const string STAFF_LIST_KEY = "staffListKey";
-        private StaffController staffController;
+        public StaffController staffController;
 
         //to declare a UNIT resource key and intiate an object for using unit
         private const string UNIT_LIST_KEY = "unitListKey";
@@ -38,10 +38,12 @@ namespace HRIS.View
             // intiate an object for using
             staffController = (StaffController)(Application.Current.FindResource(STAFF_LIST_KEY) as ObjectDataProvider).ObjectInstance;
             unitController = (UnitController)(Application.Current.FindResource(UNIT_LIST_KEY) as ObjectDataProvider).ObjectInstance;
+
         }
 
         private void StaffListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Tab.SelectedIndex = 0;
             if (e.AddedItems.Count > 0)
             {
                 StaffDetailPanel.DataContext = e.AddedItems[0];
@@ -135,7 +137,7 @@ namespace HRIS.View
                 string SelectedCampus = CampusComboBox.SelectedValue.ToString();
                 string unitCode = CodeLable.Text;
 
-                Unit unit = UnitController.GetUnitWithSelectedCampus(SelectedCampus, unitCode) as Unit;
+                Unit unit = UnitController.GetUnitWithSelectedCampus(SelectedCampus, unitCode);
 
                 if (unit != null)
                 {
@@ -145,8 +147,30 @@ namespace HRIS.View
                     }
                 }
 
-
             }
         }
+
+        //an event to navigate back to staff panel
+        
+        private void TeacherButton_Click(object sender, EventArgs e)
+        {
+
+            //MessageBox.Show(NameTag.ToolTip.ToString());
+            Tab.SelectedIndex = 0;
+
+            Staff SelectedStaff = staffController.GetClickedStaff(TeacherButton.ToolTip.ToString())[0];
+            StaffDetailPanel.DataContext = SelectedStaff;
+            PhotoGrid.DataContext = SelectedStaff;
+
+            ActivityGrid.Items.Clear();
+            ActivityGrid.Items.Refresh();
+
+            for (int i = 0; i < 8; i++)
+            {
+                ActivityGrid.Items.Add(SelectedStaff.WeeklyAvailabilityList[i]);
+            }
+
+        }
+        
     }
 }

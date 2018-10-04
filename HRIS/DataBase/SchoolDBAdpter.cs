@@ -383,7 +383,6 @@ namespace HRIS.Adapter
         }
 
         //use right join query to load a complete unit list with both campus
-        
         public static List<Unit> LoadAllUnitWithCampus()
         {
             List<Unit> AllUnitWithCampusList = new List<Unit>();
@@ -501,7 +500,60 @@ namespace HRIS.Adapter
 
             return weeklyUnitClassList;
         }
+        
+        /*
+        public static Staff getClickedStaff(string coordinator_id)
+        {
+            Staff staff = new Staff();
 
+            MySqlConnection conn = ConnAlacritas();
+            MySqlDataReader rdr = null;
 
+            try
+            {
+                conn.Open();
+                MySqlCommand sqlCmd = new MySqlCommand("select s.id, s.family_name, s.given_name, s.title, s.campus, s.phone, s.room, s.email, s.photo, s.category from unit u join staff s on u.coordinator=s.id where u.coordinator=?coordinator_id", conn);
+                queryForClass.Parameters.AddWithValue("coordinator_id", coordinator_id);
+                rdr = sqlCmd.ExecuteReader();
+
+                //pull all staff in DBtable to AllStaffList Object
+                while (rdr.Read())
+                {
+                    //Change the rer.GetString to get data by column name
+                    //AllStaffList.Add(new Staff { FamilyName = rdr.GetString(0), GivenName = rdr.GetString(1), StaffTitle = rdr.GetString(2) });
+                    AllStaffList.Add(new Staff
+                    {
+                        StaffId = Int32.Parse(rdr["id"].ToString()),
+                        FamilyName = rdr["family_name"].ToString(),
+                        GivenName = rdr["given_name"].ToString(),
+                        StaffTitle = rdr["title"].ToString(),
+                        Campus = ParseEnum<Campus>(rdr["campus"].ToString()),
+                        Phone = rdr["phone"].ToString(),
+                        Room = rdr["room"].ToString(),
+                        Email = rdr["email"].ToString(),
+                        PhotoUrl = rdr["photo"].ToString(),
+                        Category = ParseEnum<Category>(rdr["category"].ToString())
+                    });
+                }
+            }
+            catch (MySqlException e)
+            {
+                throw;
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return AllStaffList;
+        }
+        */
+        
     }
 }

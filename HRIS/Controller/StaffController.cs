@@ -89,6 +89,16 @@ namespace HRIS.Controller
             staffViewList.Clear();
             filteredList.ToList().ForEach(staffViewList.Add);
         }
+        
+
+        public List<Staff> GetClickedStaff(string coordinator_id)
+        {
+            var filteredList = from Staff s in allStaffList
+                               where s.StaffId == Int32.Parse(coordinator_id)
+                               select s;
+
+            return filteredList.ToList();
+        }
 
     }
 }
