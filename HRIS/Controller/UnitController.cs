@@ -44,8 +44,7 @@ namespace HRIS.Controller
            
             foreach (Unit u in allUnitList)
             {
-                //MainWindow win = new MainWindow();
-                //Campus campus = ParseEnum<Campus>(win.CampusComboBox.SelectedValue.ToString());
+                
                 //-----------------------
                 //u.WeeklyUnitClassList = SchoolDBAdpter.LoadWeeklyUnitClassList("Hobart", u.UnitCode);
             }

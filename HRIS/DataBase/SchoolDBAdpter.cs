@@ -476,7 +476,7 @@ namespace HRIS.Adapter
                             if (w.Start == (start + i))
                             {
                                 int indexOfWeekDay = (int)ParseEnum<DayOfWeek>(rdr.GetString(2));
-                                w.MonToFri_Activity[(indexOfWeekDay - 1)] = $"{classType}\n{room}\n{teacher}\n{camp}";
+                                w.MonToFri_Activity[(indexOfWeekDay - 1)] = $"{classType}\nRm: {room}\n{teacher}\n{camp}";
                             }
                         }
                     }

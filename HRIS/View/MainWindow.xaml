@@ -7,7 +7,7 @@
         xmlns:entity="clr-namespace:HRIS.Teaching"
         xmlns:controller="clr-namespace:HRIS.Controller"
         mc:Ignorable="d"
-        Title="HRIS - KIT506 Assignment2 - By Group k506h_a2_m1300_9" Height="670" Width="900">
+        Title="HRIS - KIT506 Assignment2 - By Group k506h_a2_m1300_9" Height="740" Width="930">
     
     <Grid>
         <TabControl  Margin="2" HorizontalAlignment="Stretch">
@@ -67,8 +67,8 @@
                     </Grid>
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="3*" />
-                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="9*" />
+                            <RowDefinition Height="10*" />
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
@@ -78,7 +78,7 @@
                             <Grid Grid.Column="0">
 
                                 <!--Fill in the selected detail panel-->
-                                <StackPanel x:Name="StaffDetailPanel" Orientation="Vertical" Margin="20,15,0,3">
+                                <StackPanel x:Name="StaffDetailPanel" Orientation="Vertical" Margin="20,15,0,5">
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                         <TextBlock Text="Name:  " />
                                         <TextBlock Text="{Binding Path=StaffTitle}" />
@@ -107,8 +107,7 @@
                                     <ListBox ItemsSource="{Binding Path=StaffConsultationList}" 
                                              Margin="0,0,10,10" Height="57" VerticalAlignment="Bottom"/>
                                     <TextBlock Text="Teaching This Semester:"/>
-                                    <ListBox  ItemsSource="{Binding UnitTeachingList}"
-                                              Height="131" Margin="0,0,10,0"/>
+                                    <ListBox  ItemsSource="{Binding UnitTeachingList}" Margin="0,0,10,0" Height="104"/>
                                 </StackPanel>
                             </Grid>
                             <Grid Grid.Column="1">
@@ -117,8 +116,7 @@
                         </Grid>
                         <Grid Grid.Row="1">
                             <Expander IsExpanded="True" Header="Show/Hide Staff Activity Grid">
-                                <DataGrid x:Name="ActivityGrid" HorizontalAlignment="Left" VerticalAlignment="Top"
-                                          Width="500" Height="200">
+                                <DataGrid x:Name="ActivityGrid" Margin="5,0,5,5">
                                     <DataGrid.Resources>
                                         <Style TargetType="{x:Type DataGridColumnHeader}">
                                             <Setter Property="Background" Value="LightGray" />
@@ -128,17 +126,17 @@
                                     </DataGrid.Resources>
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Time" 
-                                                            Binding="{Binding RowHeader }" Width="83" />
+                                                            Binding="{Binding RowHeader }" Width="98" />
                                         <DataGridTextColumn Header="Monday"
-                                                            Binding="{Binding Mon_Activity }" Width="83"/>
+                                                            Binding="{Binding Mon_Activity }" Width="98"/>
                                         <DataGridTextColumn Header="Tuesday"
-                                                            Binding="{Binding Tue_Activity}" Width="83"/>
+                                                            Binding="{Binding Tue_Activity}" Width="98"/>
                                         <DataGridTextColumn Header="Wednesday" 
-                                                            Binding="{Binding Wed_Activity}" Width="83"/>
+                                                            Binding="{Binding Wed_Activity}" Width="98"/>
                                         <DataGridTextColumn Header="Thursday" 
-                                                            Binding="{Binding Thu_Activity}" Width="83"/>
+                                                            Binding="{Binding Thu_Activity}" Width="98"/>
                                         <DataGridTextColumn Header="Friday" 
-                                                            Binding="{Binding Fri_Activity}" Width="83"/>
+                                                            Binding="{Binding Fri_Activity}" Width="98"/>
                                                 
                                     </DataGrid.Columns>
 
